@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кейсы — GrowthLab</title>
+  <meta name="description" content="Кейсы маркетингового агентства GrowthLab: e-commerce, SaaS, услуги, образование. Задача, решение, цифры.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a href="index.html" class="logo"><span class="logo-mark">G</span> GrowthLab</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="services.html">Услуги</a></li>
+      <li><a href="cases.html">Кейсы</a></li>
+      <li><a href="blog.html">Блог</a></li>
+      <li><a href="about.html">О нас</a></li>
+    </ul>
+    <a href="about.html#contact" class="btn btn-primary btn-sm">Оставить заявку</a>
+    <button class="burger" aria-label="Меню">☰</button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow tag">Кейсы</span>
+    <h1 style="margin-top:14px">Результаты в цифрах</h1>
+    <p>Отфильтруйте кейсы по отрасли и нажмите на карточку, чтобы увидеть задачу, решение и итоговые метрики.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="tabs" id="case-filters">
+      <button class="tab active" data-filter="all">Все</button>
+      <button class="tab" data-filter="ecommerce">E-commerce</button>
+      <button class="tab" data-filter="saas">SaaS</button>
+      <button class="tab" data-filter="services">Услуги</button>
+      <button class="tab" data-filter="education">Образование</button>
+    </div>
+    <div class="grid grid-3" id="cases-grid"></div>
+  </div>
+</section>
+
+<div class="modal" id="case-modal">
+  <div class="modal-box">
+    <button class="modal-close" aria-label="Закрыть">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>© <span data-year></span> GrowthLab — маркетинговое агентство. Данные на сайте демонстрационные.</div>
+    <ul>
+      <li><a href="services.html">Услуги</a></li>
+      <li><a href="cases.html">Кейсы</a></li>
+      <li><a href="blog.html">Блог</a></li>
+      <li><a href="about.html#contact">Контакты</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  (function () {
+    const grid = document.getElementById("cases-grid");
+    const filters = document.getElementById("case-filters");
+    const modal = document.getElementById("case-modal");
+    const content = document.getElementById("modal-content");
+
+    function render(filter) {
+      grid.innerHTML = "";
+      const list = SITE_DATA.cases.filter((c) => filter === "all" || c.industry === filter);
+      if (!list.length) {
+        grid.innerHTML = '<div class="empty">Кейсов в этой категории пока нет.</div>';
+        return;
+      }
+      list.forEach((c) => {
+        const el = document.createElement("div");
+        el.className = "card case-card";
+        el.innerHTML = `
+          <div class="cover" style="background:${c.color}">${c.emoji}</div>
+          <span class="tag">${c.industryLabel}</span>
+          <h3 style="margin-top:10px">${c.title}</h3>
+          <p>${c.task}</p>
+          <div class="case-metrics">${c.metrics.slice(0, 2).map((m) => `<div><strong>${m.value}</strong>${m.label}</div>`).join("")}</div>
+          <span class="link" style="margin-top:14px">Открыть кейс →</span>`;
+        el.addEventListener("click", () => open(c));
+        grid.appendChild(el);
+      });
+    }
+
+    function open(c) {
+      history.replaceState(null, "", "#" + c.id);
+      content.innerHTML = `
+        <span class="tag">${c.industryLabel}</span>
+        <h2 style="margin-top:12px">${c.emoji} ${c.title}</h2>
+        <p class="muted">Срок работы: ${c.period}</p>
+        <div class="modal-metrics">${c.metrics.map((m) => `<div><strong>${m.value}</strong><span>${m.label}</span></div>`).join("")}</div>
+        <h3>Задача</h3><p>${c.task}</p>
+        <h3>Что сделали</h3><p>${c.solution}</p>
+        <a href="about.html#contact" class="btn btn-primary">Хочу так же</a>`;
+      modal.classList.add("open");
+    }
+    function close() {
+      modal.classList.remove("open");
+      history.replaceState(null, "", location.pathname);
+    }
+
+    filters.addEventListener("click", (e) => {
+      const btn = e.target.closest(".tab");
+      if (!btn) return;
+      filters.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+      btn.classList.add("active");
+      render(btn.dataset.filter);
+    });
+    modal.querySelector(".modal-close").addEventListener("click", close);
+    modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+
+    render("all");
+    // Открыть кейс по ссылке cases.html#ecom-fashion
+    const fromHash = SITE_DATA.cases.find((c) => c.id === location.hash.slice(1));
+    if (fromHash) open(fromHash);
+  })();
+</script>
+</body>
+</html>

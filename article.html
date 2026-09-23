@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Статья — GrowthLab</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="container nav">
+    <a href="index.html" class="logo"><span class="logo-mark">G</span> GrowthLab</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="services.html">Услуги</a></li>
+      <li><a href="cases.html">Кейсы</a></li>
+      <li><a href="blog.html">Блог</a></li>
+      <li><a href="about.html">О нас</a></li>
+    </ul>
+    <a href="about.html#contact" class="btn btn-primary btn-sm">Оставить заявку</a>
+    <button class="burger" aria-label="Меню">☰</button>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <article class="article" id="article">
+      <p class="muted">Загрузка…</p>
+    </article>
+  </div>
+</section>
+
+<section class="section soft">
+  <div class="container">
+    <h2>Читайте также</h2>
+    <div class="grid grid-3" id="related"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>© <span data-year></span> GrowthLab — маркетинговое агентство. Данные на сайте демонстрационные.</div>
+    <ul>
+      <li><a href="services.html">Услуги</a></li>
+      <li><a href="cases.html">Кейсы</a></li>
+      <li><a href="blog.html">Блог</a></li>
+      <li><a href="about.html#contact">Контакты</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  (function () {
+    const id = new URLSearchParams(location.search).get("id");
+    const post = SITE_DATA.posts.find((p) => p.id === id);
+    const box = document.getElementById("article");
+    const fmtDate = (d) => new Date(d).toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" });
+
+    if (!post) {
+      box.innerHTML = `<h1>Статья не найдена</h1><p class="muted">Возможно, ссылка устарела.</p><a href="blog.html" class="btn btn-ghost">← В блог</a>`;
+    } else {
+      document.title = post.title + " — GrowthLab";
+      box.innerHTML = `
+        <a href="blog.html" class="link" style="color:var(--accent);font-weight:600">← Все статьи</a>
+        <div class="post-meta" style="margin-top:20px"><span class="tag">${post.category}</span> ${fmtDate(post.date)} · ${post.readTime} мин чтения</div>
+        <h1>${post.title}</h1>
+        <p class="muted" style="font-size:1.15rem">${post.excerpt}</p>
+        <div class="body">${post.body}</div>
+        <div class="cta" style="margin-top:40px;padding:36px 24px">
+          <h2 style="font-size:1.5rem">Нужна помощь с внедрением?</h2>
+          <p>Расскажите о задаче — предложим план и оценку.</p>
+          <a href="about.html#contact" class="btn btn-primary">Написать нам</a>
+        </div>`;
+    }
+
+    const related = document.getElementById("related");
+    SITE_DATA.posts.filter((p) => p.id !== id).slice(0, 3).forEach((p) => {
+      const el = document.createElement("a");
+      el.className = "card";
+      el.href = "article.html?id=" + p.id;
+      el.innerHTML = `<div class="post-meta"><span class="tag">${p.category}</span> ${p.readTime} мин</div><h3>${p.title}</h3><p>${p.excerpt}</p><span class="link">Читать →</span>`;
+      related.appendChild(el);
+    });
+  })();
+</script>
+</body>
+</html>
