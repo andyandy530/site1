@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="blog.meta.title">Блог — GovnoLab</title>
-  <meta name="description" data-i18n-content="blog.meta.desc" content="Блог GovnoLab о маркетинге: аналитика, реклама, SEO, контент, CRM. Практические статьи без воды.">
+  <title data-i18n="blog.meta.title">Blog — GovnoLab</title>
+  <meta name="description" data-i18n-content="blog.meta.desc" content="The GovnoLab marketing blog: analytics, paid ads, SEO, content and CRM. Practical articles, no fluff.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -12,34 +12,34 @@
   <div class="container nav">
     <a href="index.html" class="logo"><span class="logo-mark">G</span> GovnoLab</a>
     <ul class="nav-links">
-      <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
-      <li><a href="services.html" data-i18n="nav.services">Услуги</a></li>
-      <li><a href="cases.html" data-i18n="nav.cases">Кейсы</a></li>
-      <li><a href="blog.html" data-i18n="nav.blog">Блог</a></li>
-      <li><a href="about.html" data-i18n="nav.about">О нас</a></li>
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+      <li><a href="cases.html" data-i18n="nav.cases">Case studies</a></li>
+      <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
     </ul>
     <div class="nav-right">
-      <div class="lang" role="group" aria-label="Язык" data-i18n-aria-label="nav.lang">
-        <button type="button" data-lang="ru">RU</button>
+      <div class="lang" role="group" aria-label="Language" data-i18n-aria-label="nav.lang">
         <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="ru">RU</button>
       </div>
-      <a href="about.html#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">Оставить заявку</a>
-      <button class="burger" aria-label="Меню" data-i18n-aria-label="nav.menu">☰</button>
+      <a href="about.html#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">Get in touch</a>
+      <button class="burger" aria-label="Menu" data-i18n-aria-label="nav.menu">☰</button>
     </div>
   </div>
 </header>
 
 <section class="page-hero">
   <div class="container">
-    <span class="eyebrow tag" data-i18n="blog.tag">Блог</span>
-    <h1 style="margin-top:14px" data-i18n="blog.title">Практика маркетинга</h1>
-    <p data-i18n="blog.lead">Разборы, инструкции и цифры из нашей работы. Ищите по названию или фильтруйте по рубрике.</p>
+    <span class="eyebrow tag" data-i18n="blog.tag">Blog</span>
+    <h1 style="margin-top:14px" data-i18n="blog.title">Marketing in practice</h1>
+    <p data-i18n="blog.lead">Breakdowns, how-tos and real numbers from our work. Search by title or filter by topic.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <input type="search" class="search" id="post-search" placeholder="Поиск по статьям…" data-i18n-placeholder="blog.search">
+    <input type="search" class="search" id="post-search" placeholder="Search articles…" data-i18n-placeholder="blog.search">
     <div class="tabs" id="post-filters"></div>
     <div class="grid grid-3" id="posts-grid"></div>
   </div>
@@ -47,12 +47,12 @@
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div>© <span data-year></span> <span data-i18n="footer.copy">GovnoLab — маркетинговое агентство. Данные на сайте демонстрационные.</span></div>
+    <div>© <span data-year></span> <span data-i18n="footer.copy">GovnoLab — performance marketing agency. All figures on this site are for demonstration purposes.</span></div>
     <ul>
-      <li><a href="services.html" data-i18n="footer.services">Услуги</a></li>
-      <li><a href="cases.html" data-i18n="footer.cases">Кейсы</a></li>
-      <li><a href="blog.html" data-i18n="footer.blog">Блог</a></li>
-      <li><a href="about.html#contact" data-i18n="footer.contacts">Контакты</a></li>
+      <li><a href="services.html" data-i18n="footer.services">Services</a></li>
+      <li><a href="cases.html" data-i18n="footer.cases">Case studies</a></li>
+      <li><a href="blog.html" data-i18n="footer.blog">Blog</a></li>
+      <li><a href="about.html#contact" data-i18n="footer.contacts">Contact</a></li>
     </ul>
   </div>
 </footer>
@@ -65,16 +65,16 @@
     const search = document.getElementById("post-search");
     const filters = document.getElementById("post-filters");
     const L = I18N.L, t = I18N.t;
-    let category = "all"; // ключ рубрики = её русское название
+    let category = "all"; // category key = its English label
 
     function renderFilters() {
       filters.innerHTML = "";
-      const cats = ["all", ...new Set(SITE_DATA.posts.map((p) => p.category.ru))];
+      const cats = ["all", ...new Set(SITE_DATA.posts.map((p) => p.category.en))];
       cats.forEach((c) => {
         const b = document.createElement("button");
         b.className = "tab" + (c === category ? " active" : "");
         b.dataset.filter = c;
-        const post = SITE_DATA.posts.find((p) => p.category.ru === c);
+        const post = SITE_DATA.posts.find((p) => p.category.en === c);
         b.textContent = c === "all" ? t("js.all") : L(post.category);
         filters.appendChild(b);
       });
@@ -85,7 +85,7 @@
     function render() {
       const q = search.value.trim().toLowerCase();
       const list = SITE_DATA.posts.filter((p) =>
-        (category === "all" || p.category.ru === category) &&
+        (category === "all" || p.category.en === category) &&
         (!q || L(p.title).toLowerCase().includes(q) || L(p.excerpt).toLowerCase().includes(q))
       );
       grid.innerHTML = list.length ? "" : `<div class="empty">${t("js.noposts")}</div>`;

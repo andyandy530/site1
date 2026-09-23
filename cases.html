@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="cases.meta.title">Кейсы — GovnoLab</title>
-  <meta name="description" data-i18n-content="cases.meta.desc" content="Кейсы маркетингового агентства GovnoLab: e-commerce, SaaS, услуги, образование. Задача, решение, цифры.">
+  <title data-i18n="cases.meta.title">Case Studies — GovnoLab</title>
+  <meta name="description" data-i18n-content="cases.meta.desc" content="GovnoLab case studies across e-commerce, SaaS, services and education: the challenge, the solution and the numbers.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -12,39 +12,39 @@
   <div class="container nav">
     <a href="index.html" class="logo"><span class="logo-mark">G</span> GovnoLab</a>
     <ul class="nav-links">
-      <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
-      <li><a href="services.html" data-i18n="nav.services">Услуги</a></li>
-      <li><a href="cases.html" data-i18n="nav.cases">Кейсы</a></li>
-      <li><a href="blog.html" data-i18n="nav.blog">Блог</a></li>
-      <li><a href="about.html" data-i18n="nav.about">О нас</a></li>
+      <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+      <li><a href="cases.html" data-i18n="nav.cases">Case studies</a></li>
+      <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
     </ul>
     <div class="nav-right">
-      <div class="lang" role="group" aria-label="Язык" data-i18n-aria-label="nav.lang">
-        <button type="button" data-lang="ru">RU</button>
+      <div class="lang" role="group" aria-label="Language" data-i18n-aria-label="nav.lang">
         <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="ru">RU</button>
       </div>
-      <a href="about.html#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">Оставить заявку</a>
-      <button class="burger" aria-label="Меню" data-i18n-aria-label="nav.menu">☰</button>
+      <a href="about.html#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">Get in touch</a>
+      <button class="burger" aria-label="Menu" data-i18n-aria-label="nav.menu">☰</button>
     </div>
   </div>
 </header>
 
 <section class="page-hero">
   <div class="container">
-    <span class="eyebrow tag" data-i18n="cases.tag">Кейсы</span>
-    <h1 style="margin-top:14px" data-i18n="cases.title">Результаты в цифрах</h1>
-    <p data-i18n="cases.lead">Отфильтруйте кейсы по отрасли и нажмите на карточку, чтобы увидеть задачу, решение и итоговые метрики.</p>
+    <span class="eyebrow tag" data-i18n="cases.tag">Case studies</span>
+    <h1 style="margin-top:14px" data-i18n="cases.title">Results in numbers</h1>
+    <p data-i18n="cases.lead">Filter by industry and click a card to see the challenge, the solution and the final metrics.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
     <div class="tabs" id="case-filters">
-      <button class="tab active" data-filter="all" data-i18n="cases.f.all">Все</button>
+      <button class="tab active" data-filter="all" data-i18n="cases.f.all">All</button>
       <button class="tab" data-filter="ecommerce" data-i18n="cases.f.ecommerce">E-commerce</button>
       <button class="tab" data-filter="saas" data-i18n="cases.f.saas">SaaS</button>
-      <button class="tab" data-filter="services" data-i18n="cases.f.services">Услуги</button>
-      <button class="tab" data-filter="education" data-i18n="cases.f.education">Образование</button>
+      <button class="tab" data-filter="services" data-i18n="cases.f.services">Services</button>
+      <button class="tab" data-filter="education" data-i18n="cases.f.education">Education</button>
     </div>
     <div class="grid grid-3" id="cases-grid"></div>
   </div>
@@ -52,19 +52,19 @@
 
 <div class="modal" id="case-modal">
   <div class="modal-box">
-    <button class="modal-close" aria-label="Закрыть" data-i18n-aria-label="cases.close">✕</button>
+    <button class="modal-close" aria-label="Close" data-i18n-aria-label="cases.close">✕</button>
     <div id="modal-content"></div>
   </div>
 </div>
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div>© <span data-year></span> <span data-i18n="footer.copy">GovnoLab — маркетинговое агентство. Данные на сайте демонстрационные.</span></div>
+    <div>© <span data-year></span> <span data-i18n="footer.copy">GovnoLab — performance marketing agency. All figures on this site are for demonstration purposes.</span></div>
     <ul>
-      <li><a href="services.html" data-i18n="footer.services">Услуги</a></li>
-      <li><a href="cases.html" data-i18n="footer.cases">Кейсы</a></li>
-      <li><a href="blog.html" data-i18n="footer.blog">Блог</a></li>
-      <li><a href="about.html#contact" data-i18n="footer.contacts">Контакты</a></li>
+      <li><a href="services.html" data-i18n="footer.services">Services</a></li>
+      <li><a href="cases.html" data-i18n="footer.cases">Case studies</a></li>
+      <li><a href="blog.html" data-i18n="footer.blog">Blog</a></li>
+      <li><a href="about.html#contact" data-i18n="footer.contacts">Contact</a></li>
     </ul>
   </div>
 </footer>
