@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="svc.meta.title">Services & Pricing — GovnoLab</title>
   <meta name="description" data-i18n-content="svc.meta.desc" content="GovnoLab services: paid ads, SEO, content, analytics, social media and strategy. Pricing plans and a payback calculator.">
+  <meta name="theme-color" content="#0a0e17">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -24,7 +28,7 @@
         <button type="button" data-lang="ru">RU</button>
       </div>
       <a href="about.html#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">Get in touch</a>
-      <button class="burger" aria-label="Menu" data-i18n-aria-label="nav.menu">☰</button>
+      <button class="burger" aria-label="Menu" data-i18n-aria-label="nav.menu"><span data-icon="menu"></span></button>
     </div>
   </div>
 </header>
@@ -40,12 +44,12 @@
 <section class="section">
   <div class="container" data-tabs>
     <div class="tabs">
-      <button class="tab active" data-tab="ads" data-i18n="svc.tab.ads">🎯 Paid ads</button>
-      <button class="tab" data-tab="seo" data-i18n="svc.tab.seo">🔍 SEO</button>
-      <button class="tab" data-tab="content" data-i18n="svc.tab.content">✍️ Content</button>
-      <button class="tab" data-tab="analytics" data-i18n="svc.tab.analytics">📊 Analytics</button>
-      <button class="tab" data-tab="smm" data-i18n="svc.tab.smm">📱 Social media</button>
-      <button class="tab" data-tab="strategy" data-i18n="svc.tab.strategy">🧭 Strategy</button>
+      <button class="tab active" data-tab="ads"><span data-icon="megaphone"></span><span data-i18n="svc.tab.ads">Paid ads</span></button>
+      <button class="tab" data-tab="seo"><span data-icon="search"></span><span data-i18n="svc.tab.seo">SEO</span></button>
+      <button class="tab" data-tab="content"><span data-icon="pen-line"></span><span data-i18n="svc.tab.content">Content</span></button>
+      <button class="tab" data-tab="analytics"><span data-icon="chart-column"></span><span data-i18n="svc.tab.analytics">Analytics</span></button>
+      <button class="tab" data-tab="smm"><span data-icon="smartphone"></span><span data-i18n="svc.tab.smm">Social media</span></button>
+      <button class="tab" data-tab="strategy"><span data-icon="compass"></span><span data-i18n="svc.tab.strategy">Strategy</span></button>
     </div>
 
     <div class="tab-panel active" id="ads">
@@ -65,9 +69,9 @@
         <div>
           <table class="table">
             <tr><th data-i18n="svc.th.plan">Plan</th><th data-i18n="svc.th.budget">Client ad spend</th><th data-i18n="svc.th.price">Price</th></tr>
-            <tr><td data-i18n="svc.ads.r1">Start</td><td data-i18n="svc.ads.r1b">up to 300,000 ₽ per month</td><td class="price" data-i18n="svc.ads.r1p">45,000 ₽</td></tr>
-            <tr><td data-i18n="svc.ads.r2">Growth</td><td data-i18n="svc.ads.r2b">300,000 – 1M ₽ per month</td><td class="price" data-i18n="svc.ads.r2p">12% of ad spend</td></tr>
-            <tr><td data-i18n="svc.ads.r3">Scale</td><td data-i18n="svc.ads.r3b">1M ₽+ per month</td><td class="price" data-i18n="svc.ads.r3p">custom quote</td></tr>
+            <tr><td data-i18n="svc.ads.r1">Start</td><td data-i18n="svc.ads.r1b">up to $3,000 per month</td><td class="price" data-i18n="svc.ads.r1p">$500</td></tr>
+            <tr><td data-i18n="svc.ads.r2">Growth</td><td data-i18n="svc.ads.r2b">$3,000 – $10,000 per month</td><td class="price" data-i18n="svc.ads.r2p">12% of ad spend</td></tr>
+            <tr><td data-i18n="svc.ads.r3">Scale</td><td data-i18n="svc.ads.r3b">$10,000+ per month</td><td class="price" data-i18n="svc.ads.r3p">custom quote</td></tr>
           </table>
           <p class="muted" style="margin-top:12px;font-size:.9rem" data-i18n="svc.ads.note">First results within 2–3 weeks of launch.</p>
         </div>
@@ -91,9 +95,9 @@
         <div>
           <table class="table">
             <tr><th data-i18n="svc.th.plan">Plan</th><th data-i18n="svc.th.scope">Scope</th><th data-i18n="svc.th.price">Price</th></tr>
-            <tr><td data-i18n="svc.seo.r1">Basic</td><td data-i18n="svc.seo.r1b">up to 100 pages</td><td class="price" data-i18n="svc.seo.r1p">60,000 ₽ per month</td></tr>
-            <tr><td data-i18n="svc.seo.r2">Extended</td><td data-i18n="svc.seo.r2b">up to 1,000 pages</td><td class="price" data-i18n="svc.seo.r2p">110,000 ₽ per month</td></tr>
-            <tr><td data-i18n="svc.seo.r3">E-commerce</td><td data-i18n="svc.seo.r3b">1,000+ pages</td><td class="price" data-i18n="svc.seo.r3p">from 180,000 ₽ per month</td></tr>
+            <tr><td data-i18n="svc.seo.r1">Basic</td><td data-i18n="svc.seo.r1b">up to 100 pages</td><td class="price" data-i18n="svc.seo.r1p">$700 per month</td></tr>
+            <tr><td data-i18n="svc.seo.r2">Extended</td><td data-i18n="svc.seo.r2b">up to 1,000 pages</td><td class="price" data-i18n="svc.seo.r2p">$1,200 per month</td></tr>
+            <tr><td data-i18n="svc.seo.r3">E-commerce</td><td data-i18n="svc.seo.r3b">1,000+ pages</td><td class="price" data-i18n="svc.seo.r3p">from $2,000 per month</td></tr>
           </table>
           <p class="muted" style="margin-top:12px;font-size:.9rem" data-i18n="svc.seo.note">Sustained traffic growth within 3–5 months.</p>
         </div>
@@ -116,9 +120,9 @@
         <div>
           <table class="table">
             <tr><th data-i18n="svc.th.package">Package</th><th data-i18n="svc.th.includes">Includes</th><th data-i18n="svc.th.price">Price</th></tr>
-            <tr><td data-i18n="svc.content.r1">Editorial</td><td data-i18n="svc.content.r1b">4 articles + 2 newsletters per month</td><td class="price" data-i18n="svc.content.r1p">70,000 ₽ per month</td></tr>
-            <tr><td data-i18n="svc.content.r2">Media</td><td data-i18n="svc.content.r2b">8 articles + 4 newsletters + 8 videos per month</td><td class="price" data-i18n="svc.content.r2p">150,000 ₽ per month</td></tr>
-            <tr><td data-i18n="svc.content.r3">Strategy</td><td data-i18n="svc.content.r3b">one-time project</td><td class="price" data-i18n="svc.content.r3p">90,000 ₽</td></tr>
+            <tr><td data-i18n="svc.content.r1">Editorial</td><td data-i18n="svc.content.r1b">4 articles + 2 newsletters per month</td><td class="price" data-i18n="svc.content.r1p">$800 per month</td></tr>
+            <tr><td data-i18n="svc.content.r2">Media</td><td data-i18n="svc.content.r2b">8 articles + 4 newsletters + 8 videos per month</td><td class="price" data-i18n="svc.content.r2p">$1,700 per month</td></tr>
+            <tr><td data-i18n="svc.content.r3">Strategy</td><td data-i18n="svc.content.r3b">one-time project</td><td class="price" data-i18n="svc.content.r3p">$1,000</td></tr>
           </table>
         </div>
       </div>
@@ -140,9 +144,9 @@
         <div>
           <table class="table">
             <tr><th data-i18n="svc.th.work">Work</th><th data-i18n="svc.th.time">Timeline</th><th data-i18n="svc.th.price">Price</th></tr>
-            <tr><td data-i18n="svc.analytics.r1">Basic setup</td><td data-i18n="svc.analytics.r1b">1–2 weeks</td><td class="price" data-i18n="svc.analytics.r1p">55,000 ₽</td></tr>
-            <tr><td data-i18n="svc.analytics.r2">End-to-end analytics with CRM</td><td data-i18n="svc.analytics.r2b">3–4 weeks</td><td class="price" data-i18n="svc.analytics.r2p">140,000 ₽</td></tr>
-            <tr><td data-i18n="svc.analytics.r3">Ongoing support</td><td data-i18n="svc.analytics.r3b">monthly</td><td class="price" data-i18n="svc.analytics.r3p">25,000 ₽ per month</td></tr>
+            <tr><td data-i18n="svc.analytics.r1">Basic setup</td><td data-i18n="svc.analytics.r1b">1–2 weeks</td><td class="price" data-i18n="svc.analytics.r1p">$600</td></tr>
+            <tr><td data-i18n="svc.analytics.r2">End-to-end analytics with CRM</td><td data-i18n="svc.analytics.r2b">3–4 weeks</td><td class="price" data-i18n="svc.analytics.r2p">$1,500</td></tr>
+            <tr><td data-i18n="svc.analytics.r3">Ongoing support</td><td data-i18n="svc.analytics.r3b">monthly</td><td class="price" data-i18n="svc.analytics.r3p">$300 per month</td></tr>
           </table>
         </div>
       </div>
@@ -164,9 +168,9 @@
         <div>
           <table class="table">
             <tr><th data-i18n="svc.th.package">Package</th><th data-i18n="svc.th.includes">Includes</th><th data-i18n="svc.th.price">Price</th></tr>
-            <tr><td data-i18n="svc.smm.r1">Lite</td><td data-i18n="svc.smm.r1b">1 platform, 12 posts per month</td><td class="price" data-i18n="svc.smm.r1p">50,000 ₽ per month</td></tr>
-            <tr><td data-i18n="svc.smm.r2">Standard</td><td data-i18n="svc.smm.r2b">2 platforms, 24 posts + stories</td><td class="price" data-i18n="svc.smm.r2p">95,000 ₽ per month</td></tr>
-            <tr><td data-i18n="svc.smm.r3">Influence</td><td data-i18n="svc.smm.r3b">selection and launch of 5 influencer integrations</td><td class="price" data-i18n="svc.smm.r3p">from 80,000 ₽</td></tr>
+            <tr><td data-i18n="svc.smm.r1">Lite</td><td data-i18n="svc.smm.r1b">1 platform, 12 posts per month</td><td class="price" data-i18n="svc.smm.r1p">$550 per month</td></tr>
+            <tr><td data-i18n="svc.smm.r2">Standard</td><td data-i18n="svc.smm.r2b">2 platforms, 24 posts + stories</td><td class="price" data-i18n="svc.smm.r2p">$1,050 per month</td></tr>
+            <tr><td data-i18n="svc.smm.r3">Influence</td><td data-i18n="svc.smm.r3b">selection and launch of 5 influencer integrations</td><td class="price" data-i18n="svc.smm.r3p">from $900</td></tr>
           </table>
         </div>
       </div>
@@ -188,9 +192,9 @@
         <div>
           <table class="table">
             <tr><th data-i18n="svc.th.format">Format</th><th data-i18n="svc.th.time">Timeline</th><th data-i18n="svc.th.price">Price</th></tr>
-            <tr><td data-i18n="svc.strategy.r1">Express strategy</td><td data-i18n="svc.strategy.r1b">2 weeks</td><td class="price" data-i18n="svc.strategy.r1p">120,000 ₽</td></tr>
-            <tr><td data-i18n="svc.strategy.r2">Full strategy</td><td data-i18n="svc.strategy.r2b">5–6 weeks</td><td class="price" data-i18n="svc.strategy.r2p">350,000 ₽</td></tr>
-            <tr><td data-i18n="svc.strategy.r3">Strategy session</td><td data-i18n="svc.strategy.r3b">1 day</td><td class="price" data-i18n="svc.strategy.r3p">60,000 ₽</td></tr>
+            <tr><td data-i18n="svc.strategy.r1">Express strategy</td><td data-i18n="svc.strategy.r1b">2 weeks</td><td class="price" data-i18n="svc.strategy.r1p">$1,300</td></tr>
+            <tr><td data-i18n="svc.strategy.r2">Full strategy</td><td data-i18n="svc.strategy.r2b">5–6 weeks</td><td class="price" data-i18n="svc.strategy.r2p">$3,900</td></tr>
+            <tr><td data-i18n="svc.strategy.r3">Strategy session</td><td data-i18n="svc.strategy.r3b">1 day</td><td class="price" data-i18n="svc.strategy.r3p">$650</td></tr>
           </table>
         </div>
       </div>
@@ -208,13 +212,13 @@
     <div class="calc" id="calc">
       <div class="row">
         <label><span data-i18n="svc.calc.budget">Monthly ad budget:</span> <strong id="out-budget"></strong>
-          <input type="range" id="budget" min="50000" max="2000000" step="10000" value="300000"></label>
+          <input type="range" id="budget" min="500" max="20000" step="100" value="3000"></label>
         <label><span data-i18n="svc.calc.cpl">Cost per lead:</span> <strong id="out-cpl"></strong>
-          <input type="range" id="cpl" min="200" max="10000" step="100" value="1500"></label>
+          <input type="range" id="cpl" min="5" max="100" step="1" value="15"></label>
         <label><span data-i18n="svc.calc.conv">Lead-to-sale conversion:</span> <strong id="out-conv"></strong>
           <input type="range" id="conv" min="1" max="60" step="1" value="20"></label>
         <label><span data-i18n="svc.calc.check">Average order value:</span> <strong id="out-check"></strong>
-          <input type="range" id="check" min="1000" max="300000" step="1000" value="25000"></label>
+          <input type="range" id="check" min="10" max="3000" step="10" value="250"></label>
       </div>
       <div class="calc-result">
         <div>
@@ -247,6 +251,7 @@
     </ul>
   </div>
 </footer>
+<script src="assets/js/icons.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>

@@ -1,55 +1,56 @@
-// Общая логика для всех страниц.
+// Shared logic for all pages.
 (function () {
-  // --- Шапка и мобильное меню ---
+  // --- Header & mobile menu ---
   const nav = document.querySelector(".nav-links");
   const burger = document.querySelector(".burger");
-  if (burger && nav) {
-    burger.addEventListener("click", () => nav.classList.toggle("open"));
-  }
+  if (burger && nav) burger.addEventListener("click", () => nav.classList.toggle("open"));
 
-  // Подсветка активного пункта меню по имени файла.
+  // Highlight the active nav link by file name.
   const current = location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav-links a").forEach((a) => {
     const href = a.getAttribute("href");
-    if (href === current || (current === "article.html" && href === "blog.html")) {
-      a.classList.add("active");
-    }
+    if (href === current || (current === "article.html" && href === "blog.html")) a.classList.add("active");
   });
 
-  // --- Анимированные счётчики (data-count) ---
+  // --- Animated counters ---
+  // Attributes (English / default): data-count, data-prefix, data-suffix, data-decimals.
+  // Optional Russian overrides: data-count-ru, data-prefix-ru, data-suffix-ru, data-decimals-ru.
   const counters = document.querySelectorAll("[data-count]");
-  // Суффикс счётчика: data-suffix (RU) и data-suffix-en (EN), либо ключ словаря data-suffix-key.
-  const suffix = (el) => el.dataset.suffixKey ? I18N.t(el.dataset.suffixKey)
-    : (I18N.lang === "en" && el.dataset.suffixEn !== undefined ? el.dataset.suffixEn : (el.dataset.suffix || ""));
-  document.addEventListener("langchange", () => {
-    counters.forEach((el) => { if (el.dataset.done) el.textContent = (+el.dataset.count).toLocaleString(I18N.locale()) + suffix(el); });
-  });
+  const attr = (el, name) => {
+    const v = el.dataset[name + (I18N.lang === "ru" ? "Ru" : "")];
+    if (v !== undefined) return v;
+    return el.dataset[name] !== undefined ? el.dataset[name] : "";
+  };
+  const format = (el, value) => {
+    const dec = +attr(el, "decimals") || 0;
+    return attr(el, "prefix") + value.toLocaleString(I18N.locale(), { minimumFractionDigits: dec, maximumFractionDigits: dec }) + attr(el, "suffix");
+  };
+  const animate = (el) => {
+    const target = +attr(el, "count");
+    const dur = 1200, start = performance.now();
+    const tick = (t) => {
+      const p = Math.min((t - start) / dur, 1);
+      el.textContent = format(el, target * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(tick); else el.dataset.done = "1";
+    };
+    requestAnimationFrame(tick);
+  };
   if (counters.length) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        const el = e.target;
-        const target = +el.dataset.count;
-        const dur = 1200;
-        const start = performance.now();
-        const tick = (t) => {
-          const p = Math.min((t - start) / dur, 1);
-          el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString(I18N.locale()) + suffix(el);
-          if (p < 1) requestAnimationFrame(tick); else el.dataset.done = "1";
-        };
-        requestAnimationFrame(tick);
-        io.unobserve(el);
-      });
+      entries.forEach((e) => { if (e.isIntersecting) { animate(e.target); io.unobserve(e.target); } });
     }, { threshold: 0.4 });
     counters.forEach((c) => io.observe(c));
+    document.addEventListener("langchange", () => {
+      counters.forEach((el) => { if (el.dataset.done) el.textContent = format(el, +attr(el, "count")); });
+    });
   }
 
-  // --- Полоски-графики в hero (data-width) ---
+  // --- Hero bars (data-width) ---
   document.querySelectorAll(".bar-fill[data-width]").forEach((b) => {
     setTimeout(() => (b.style.width = b.dataset.width + "%"), 200);
   });
 
-  // --- Табы (.tabs / .tab-panel) ---
+  // --- Tabs (.tabs / .tab-panel) ---
   document.querySelectorAll("[data-tabs]").forEach((wrap) => {
     const tabs = wrap.querySelectorAll(".tab");
     const panels = wrap.querySelectorAll(".tab-panel");
@@ -63,12 +64,12 @@
     });
   });
 
-  // --- FAQ-аккордеон ---
+  // --- FAQ accordion ---
   document.querySelectorAll(".faq-q").forEach((q) => {
     q.addEventListener("click", () => q.parentElement.classList.toggle("open"));
   });
 
-  // --- Форма заявки (без бэкенда: валидация и сообщение) ---
+  // --- Lead form (no backend: validation and a message) ---
   const form = document.querySelector("#lead-form");
   if (form) {
     const note = form.querySelector(".form-note");
@@ -85,45 +86,52 @@
     });
   }
 
-  // --- Калькулятор бюджета ---
+  // --- Payback calculator ---
+  // Slider ranges and currency depend on the language: [min, max, step, default].
   const calc = document.querySelector("#calc");
   if (calc) {
-    const budget = calc.querySelector("#budget");
-    const cpl = calc.querySelector("#cpl");
-    const conv = calc.querySelector("#conv");
-    const check = calc.querySelector("#check");
-    const out = {
-      budget: calc.querySelector("#out-budget"),
-      cpl: calc.querySelector("#out-cpl"),
-      conv: calc.querySelector("#out-conv"),
-      check: calc.querySelector("#out-check"),
-      leads: calc.querySelector("#out-leads"),
-      sales: calc.querySelector("#out-sales"),
-      revenue: calc.querySelector("#out-revenue"),
-      romi: calc.querySelector("#out-romi")
-    };
     const fmt = (n) => Math.round(n).toLocaleString(I18N.locale());
+    const CFG = {
+      en: { budget: [500, 20000, 100, 3000], cpl: [5, 100, 1, 15], check: [10, 3000, 10, 250], money: (n) => "$" + fmt(n) },
+      ru: { budget: [50000, 2000000, 10000, 300000], cpl: [200, 10000, 100, 1500], check: [1000, 300000, 1000, 25000], money: (n) => fmt(n) + " ₽" }
+    };
+    const $ = (id) => calc.querySelector("#" + id);
+    const inputs = { budget: $("budget"), cpl: $("cpl"), conv: $("conv"), check: $("check") };
+    const out = {
+      budget: $("out-budget"), cpl: $("out-cpl"), conv: $("out-conv"), check: $("out-check"),
+      leads: $("out-leads"), sales: $("out-sales"), revenue: $("out-revenue"), romi: $("out-romi")
+    };
+    let cfg = CFG.en;
+    const configure = () => {
+      cfg = CFG[I18N.lang] || CFG.en;
+      ["budget", "cpl", "check"].forEach((k) => {
+        const [min, max, step, val] = cfg[k];
+        const i = inputs[k];
+        i.min = min; i.max = max; i.step = step; i.value = val;
+      });
+    };
     const update = () => {
-      const b = +budget.value, c = +cpl.value, cv = +conv.value, ch = +check.value;
+      const b = +inputs.budget.value, c = +inputs.cpl.value, cv = +inputs.conv.value, ch = +inputs.check.value;
       const leads = b / c;
       const sales = leads * cv / 100;
       const revenue = sales * ch;
       const romi = b ? ((revenue - b) / b) * 100 : 0;
-      out.budget.textContent = fmt(b) + " ₽";
-      out.cpl.textContent = fmt(c) + " ₽";
+      out.budget.textContent = cfg.money(b);
+      out.cpl.textContent = cfg.money(c);
       out.conv.textContent = cv + " %";
-      out.check.textContent = fmt(ch) + " ₽";
+      out.check.textContent = cfg.money(ch);
       out.leads.textContent = fmt(leads);
       out.sales.textContent = fmt(sales);
-      out.revenue.textContent = fmt(revenue) + " ₽";
+      out.revenue.textContent = cfg.money(revenue);
       out.romi.textContent = (romi >= 0 ? "+" : "") + fmt(romi) + " %";
-      out.romi.style.color = romi >= 0 ? "var(--ok)" : "#dc2626";
+      out.romi.style.color = romi >= 0 ? "var(--ok)" : "var(--danger)";
     };
-    [budget, cpl, conv, check].forEach((i) => i.addEventListener("input", update));
-    document.addEventListener("langchange", update);
+    Object.values(inputs).forEach((i) => i.addEventListener("input", update));
+    document.addEventListener("langchange", () => { configure(); update(); });
+    configure();
     update();
   }
 
-  // --- Год в подвале ---
+  // --- Year in the footer ---
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 })();

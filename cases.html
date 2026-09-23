@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="cases.meta.title">Case Studies — GovnoLab</title>
   <meta name="description" data-i18n-content="cases.meta.desc" content="GovnoLab case studies across e-commerce, SaaS, services and education: the challenge, the solution and the numbers.">
+  <meta name="theme-color" content="#0a0e17">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -24,7 +28,7 @@
         <button type="button" data-lang="ru">RU</button>
       </div>
       <a href="about.html#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">Get in touch</a>
-      <button class="burger" aria-label="Menu" data-i18n-aria-label="nav.menu">☰</button>
+      <button class="burger" aria-label="Menu" data-i18n-aria-label="nav.menu"><span data-icon="menu"></span></button>
     </div>
   </div>
 </header>
@@ -52,7 +56,7 @@
 
 <div class="modal" id="case-modal">
   <div class="modal-box">
-    <button class="modal-close" aria-label="Close" data-i18n-aria-label="cases.close">✕</button>
+    <button class="modal-close" aria-label="Close" data-i18n-aria-label="cases.close"><span data-icon="x"></span></button>
     <div id="modal-content"></div>
   </div>
 </div>
@@ -68,6 +72,7 @@
     </ul>
   </div>
 </footer>
+<script src="assets/js/icons.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
@@ -92,11 +97,11 @@
         const el = document.createElement("div");
         el.className = "card case-card";
         el.innerHTML = `
-          <div class="cover" style="background:${c.color}">${c.emoji}</div>
+          <div class="cover" style="background:${c.color}">${ICONS.svg(c.icon)}</div>
           <span class="tag">${L(c.industryLabel)}</span>
           <h3 style="margin-top:10px">${L(c.title)}</h3>
           <p>${L(c.task)}</p>
-          <div class="case-metrics">${c.metrics.slice(0, 2).map((m) => `<div><strong>${m.value}</strong>${L(m.label)}</div>`).join("")}</div>
+          <div class="case-metrics">${c.metrics.slice(0, 2).map((m) => `<div><strong>${L(m.value)}</strong>${L(m.label)}</div>`).join("")}</div>
           <span class="link" style="margin-top:14px">${t("js.opencase")}</span>`;
         el.addEventListener("click", () => open(c));
         grid.appendChild(el);
@@ -108,9 +113,9 @@
       history.replaceState(null, "", "#" + c.id);
       content.innerHTML = `
         <span class="tag">${L(c.industryLabel)}</span>
-        <h2 style="margin-top:12px">${c.emoji} ${L(c.title)}</h2>
+        <h2 style="margin-top:12px">${L(c.title)}</h2>
         <p class="muted">${t("js.period")}: ${L(c.period)}</p>
-        <div class="modal-metrics">${c.metrics.map((m) => `<div><strong>${m.value}</strong><span>${L(m.label)}</span></div>`).join("")}</div>
+        <div class="modal-metrics">${c.metrics.map((m) => `<div><strong>${L(m.value)}</strong><span>${L(m.label)}</span></div>`).join("")}</div>
         <h3>${t("js.task")}</h3><p>${L(c.task)}</p>
         <h3>${t("js.solution")}</h3><p>${L(c.solution)}</p>
         <a href="about.html#contact" class="btn btn-primary">${t("js.want")}</a>`;

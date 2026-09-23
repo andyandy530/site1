@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="home.meta.title">GovnoLab — Performance Marketing That Pays for Itself</title>
   <meta name="description" data-i18n-content="home.meta.desc" content="GovnoLab is a performance marketing agency: paid ads, SEO, content and analytics. Revenue growth backed by transparent numbers.">
+  <meta name="theme-color" content="#0a0e17">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -24,7 +28,7 @@
         <button type="button" data-lang="ru">RU</button>
       </div>
       <a href="about.html#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">Get in touch</a>
-      <button class="burger" aria-label="Menu" data-i18n-aria-label="nav.menu">☰</button>
+      <button class="burger" aria-label="Menu" data-i18n-aria-label="nav.menu"><span data-icon="menu"></span></button>
     </div>
   </div>
 </header>
@@ -57,7 +61,7 @@
     <div class="stats">
       <div class="stat"><div class="num" data-count="127" data-suffix="+">0</div><div class="label" data-i18n="home.stat1">projects launched</div></div>
       <div class="stat"><div class="num" data-count="6">0</div><div class="label" data-i18n="home.stat2">years in business</div></div>
-      <div class="stat"><div class="num" data-count="340" data-suffix-key="js.mln">0</div><div class="label" data-i18n="home.stat3">in ad spend under management</div></div>
+      <div class="stat"><div class="num" data-count="3.8" data-decimals="1" data-prefix="$" data-suffix="M" data-count-ru="340" data-decimals-ru="0" data-prefix-ru="" data-suffix-ru=" млн ₽">0</div><div class="label" data-i18n="home.stat3">in ad spend under management</div></div>
       <div class="stat"><div class="num" data-count="94" data-suffix="%">0</div><div class="label" data-i18n="home.stat4">of clients renew their contract</div></div>
     </div>
   </div>
@@ -72,37 +76,37 @@
     </div>
     <div class="grid grid-3">
       <a href="services.html#ads" class="card">
-        <div class="icon">🎯</div>
+        <div class="icon" data-icon="megaphone"></div>
         <h3 data-i18n="home.svc1.title">Paid search & social ads</h3>
         <p data-i18n="home.svc1.text">Launching, optimizing and scaling ad campaigns with one focus: cost per lead.</p>
         <span class="link" data-i18n="home.more">Learn more →</span>
       </a>
       <a href="services.html#seo" class="card">
-        <div class="icon">🔍</div>
+        <div class="icon" data-icon="search"></div>
         <h3 data-i18n="home.svc2.title">SEO</h3>
         <p data-i18n="home.svc2.text">Technical audits, keyword research, content and link building that grow organic traffic.</p>
         <span class="link" data-i18n="home.more">Learn more →</span>
       </a>
       <a href="services.html#content" class="card">
-        <div class="icon">✍️</div>
+        <div class="icon" data-icon="pen-line"></div>
         <h3 data-i18n="home.svc3.title">Content marketing</h3>
         <p data-i18n="home.svc3.text">Articles, video, email and social content that warms up your audience and drives purchases.</p>
         <span class="link" data-i18n="home.more">Learn more →</span>
       </a>
       <a href="services.html#analytics" class="card">
-        <div class="icon">📊</div>
+        <div class="icon" data-icon="chart-column"></div>
         <h3 data-i18n="home.svc4.title">End-to-end analytics</h3>
         <p data-i18n="home.svc4.text">We connect your ads, website and CRM so you can see real profit by channel.</p>
         <span class="link" data-i18n="home.more">Learn more →</span>
       </a>
       <a href="services.html#smm" class="card">
-        <div class="icon">📱</div>
+        <div class="icon" data-icon="smartphone"></div>
         <h3 data-i18n="home.svc5.title">Social media & influencers</h3>
         <p data-i18n="home.svc5.text">Social media management, seeding, influencer partnerships and a community around your brand.</p>
         <span class="link" data-i18n="home.more">Learn more →</span>
       </a>
       <a href="services.html#strategy" class="card">
-        <div class="icon">🧭</div>
+        <div class="icon" data-icon="compass"></div>
         <h3 data-i18n="home.svc6.title">Marketing strategy</h3>
         <p data-i18n="home.svc6.text">Market research, positioning, a launch plan and a budget for the year ahead.</p>
         <span class="link" data-i18n="home.more">Learn more →</span>
@@ -166,6 +170,7 @@
     </ul>
   </div>
 </footer>
+<script src="assets/js/icons.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
@@ -181,11 +186,11 @@
         el.className = "card case-card";
         el.href = "cases.html#" + c.id;
         el.innerHTML = `
-          <div class="cover" style="background:${c.color}">${c.emoji}</div>
+          <div class="cover" style="background:${c.color}">${ICONS.svg(c.icon)}</div>
           <span class="tag">${L(c.industryLabel)}</span>
           <h3 style="margin-top:10px">${L(c.title)}</h3>
           <p>${L(c.task)}</p>
-          <div class="case-metrics">${c.metrics.slice(0, 2).map((m) => `<div><strong>${m.value}</strong>${L(m.label)}</div>`).join("")}</div>`;
+          <div class="case-metrics">${c.metrics.slice(0, 2).map((m) => `<div><strong>${L(m.value)}</strong>${L(m.label)}</div>`).join("")}</div>`;
         wrap.appendChild(el);
       });
     }

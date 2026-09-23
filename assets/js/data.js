@@ -1,5 +1,6 @@
 // Общие данные сайта: кейсы и статьи блога.
 // Text fields are bilingual: { ru: "...", en: "..." }. English is the primary language.
+// "icon" is a name from assets/js/icons.js.
 // Чтобы добавить кейс или статью, достаточно дописать объект в массив.
 
 window.SITE_DATA = {
@@ -9,7 +10,7 @@ window.SITE_DATA = {
       title: { ru: "Интернет-магазин одежды", en: "Online fashion retailer" },
       industry: "ecommerce",
       industryLabel: { ru: "E-commerce", en: "E-commerce" },
-      emoji: "👗",
+      icon: "shirt",
       color: "linear-gradient(135deg,#ec4899,#8b5cf6)",
       task: {
         ru: "Снизить стоимость заказа из контекстной рекламы и масштабировать бюджет без потери эффективности.",
@@ -31,7 +32,7 @@ window.SITE_DATA = {
       title: { ru: "SaaS-сервис для малого бизнеса", en: "SaaS platform for small businesses" },
       industry: "saas",
       industryLabel: { ru: "SaaS", en: "SaaS" },
-      emoji: "☁️",
+      icon: "cloud",
       color: "linear-gradient(135deg,#06b6d4,#4f46e5)",
       task: {
         ru: "Увеличить количество регистраций на бесплатный триал и долю конверсии в платную подписку.",
@@ -53,7 +54,7 @@ window.SITE_DATA = {
       title: { ru: "Сеть стоматологических клиник", en: "Dental clinic chain" },
       industry: "services",
       industryLabel: { ru: "Услуги", en: "Services" },
-      emoji: "🦷",
+      icon: "stethoscope",
       color: "linear-gradient(135deg,#10b981,#06b6d4)",
       task: {
         ru: "Заполнить расписание врачей в трёх новых филиалах и повысить узнаваемость бренда в районе.",
@@ -66,7 +67,7 @@ window.SITE_DATA = {
       period: { ru: "4 месяца", en: "4 months" },
       metrics: [
         { value: "+240", label: { ru: "заявок в месяц", en: "leads per month" } },
-        { value: "920 ₽", label: { ru: "стоимость заявки", en: "cost per lead" } },
+        { value: { en: "$10", ru: "920 ₽" }, label: { ru: "стоимость заявки", en: "cost per lead" } },
         { value: "4.9", label: { ru: "рейтинг на картах", en: "rating on maps" } }
       ]
     },
@@ -75,7 +76,7 @@ window.SITE_DATA = {
       title: { ru: "Мобильное финтех-приложение", en: "Mobile fintech app" },
       industry: "saas",
       industryLabel: { ru: "SaaS", en: "SaaS" },
-      emoji: "💳",
+      icon: "credit-card",
       color: "linear-gradient(135deg,#f59e0b,#ef4444)",
       task: {
         ru: "Снизить стоимость установки приложения и увеличить долю активных пользователей на 30-й день.",
@@ -97,7 +98,7 @@ window.SITE_DATA = {
       title: { ru: "Мебельный бренд", en: "Furniture brand" },
       industry: "ecommerce",
       industryLabel: { ru: "E-commerce", en: "E-commerce" },
-      emoji: "🛋️",
+      icon: "armchair",
       color: "linear-gradient(135deg,#8b5cf6,#ec4899)",
       task: {
         ru: "Выйти на маркетплейсы и построить собственный канал продаж через соцсети.",
@@ -119,7 +120,7 @@ window.SITE_DATA = {
       title: { ru: "Онлайн-школа английского", en: "Online English school" },
       industry: "education",
       industryLabel: { ru: "Образование", en: "Education" },
-      emoji: "🎓",
+      icon: "graduation-cap",
       color: "linear-gradient(135deg,#4f46e5,#06b6d4)",
       task: {
         ru: "Масштабировать набор на курсы, сохранив окупаемость рекламы.",
@@ -174,7 +175,7 @@ window.SITE_DATA = {
 <li><strong>ROMI</strong> (Return on Marketing Investment) — the ratio of marketing profit to marketing spend.</li>
 </ul>
 <h2>A simple example</h2>
-<p>You spent 100,000 ₽ on ads and got 50 customers: CAC = 2,000 ₽. Each customer brings 6,000 ₽ of margin per year on average: LTV = 6,000 ₽. An LTV/CAC ratio of 3 is healthy economics. If it drops below 1, the channel is losing money.</p>
+<p>You spent $10,000 on ads and got 50 customers: CAC = $200. Each customer brings $600 of margin per year on average: LTV = $600. An LTV/CAC ratio of 3 is healthy economics. If it drops below 1, the channel is losing money.</p>
 <h2>What to do with the numbers</h2>
 <p>Calculate the metrics for each channel separately. The overall picture often looks fine while one channel drags everything down. Move budget from weak channels to strong ones and check the result every two weeks.</p>`
       }
