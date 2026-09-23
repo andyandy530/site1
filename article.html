@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Статья — GrowthLab</title>
+  <title>Статья — GovnoLab</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <header class="header">
   <div class="container nav">
-    <a href="index.html" class="logo"><span class="logo-mark">G</span> GrowthLab</a>
+    <a href="index.html" class="logo"><span class="logo-mark">G</span> GovnoLab</a>
     <ul class="nav-links">
       <li><a href="index.html">Главная</a></li>
       <li><a href="services.html">Услуги</a></li>
@@ -39,7 +39,7 @@
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div>© <span data-year></span> GrowthLab — маркетинговое агентство. Данные на сайте демонстрационные.</div>
+    <div>© <span data-year></span> GovnoLab — маркетинговое агентство. Данные на сайте демонстрационные.</div>
     <ul>
       <li><a href="services.html">Услуги</a></li>
       <li><a href="cases.html">Кейсы</a></li>
@@ -60,7 +60,7 @@
     if (!post) {
       box.innerHTML = `<h1>Статья не найдена</h1><p class="muted">Возможно, ссылка устарела.</p><a href="blog.html" class="btn btn-ghost">← В блог</a>`;
     } else {
-      document.title = post.title + " — GrowthLab";
+      document.title = post.title + " — GovnoLab";
       box.innerHTML = `
         <a href="blog.html" class="link" style="color:var(--accent);font-weight:600">← Все статьи</a>
         <div class="post-meta" style="margin-top:20px"><span class="tag">${post.category}</span> ${fmtDate(post.date)} · ${post.readTime} мин чтения</div>
