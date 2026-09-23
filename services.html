@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Услуги и цены — GovnoLab</title>
-  <meta name="description" content="Услуги маркетингового агентства GovnoLab: реклама, SEO, контент, аналитика, SMM, стратегия. Тарифы и калькулятор бюджета.">
+  <title data-i18n="svc.meta.title">Услуги и цены — GovnoLab</title>
+  <meta name="description" data-i18n-content="svc.meta.desc" content="Услуги маркетингового агентства GovnoLab: реклама, SEO, контент, аналитика, SMM, стратегия. Тарифы и калькулятор бюджета.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -12,58 +12,64 @@
   <div class="container nav">
     <a href="index.html" class="logo"><span class="logo-mark">G</span> GovnoLab</a>
     <ul class="nav-links">
-      <li><a href="index.html">Главная</a></li>
-      <li><a href="services.html">Услуги</a></li>
-      <li><a href="cases.html">Кейсы</a></li>
-      <li><a href="blog.html">Блог</a></li>
-      <li><a href="about.html">О нас</a></li>
+      <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
+      <li><a href="services.html" data-i18n="nav.services">Услуги</a></li>
+      <li><a href="cases.html" data-i18n="nav.cases">Кейсы</a></li>
+      <li><a href="blog.html" data-i18n="nav.blog">Блог</a></li>
+      <li><a href="about.html" data-i18n="nav.about">О нас</a></li>
     </ul>
-    <a href="about.html#contact" class="btn btn-primary btn-sm">Оставить заявку</a>
-    <button class="burger" aria-label="Меню">☰</button>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Язык" data-i18n-aria-label="nav.lang">
+        <button type="button" data-lang="ru">RU</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="about.html#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">Оставить заявку</a>
+      <button class="burger" aria-label="Меню" data-i18n-aria-label="nav.menu">☰</button>
+    </div>
   </div>
 </header>
 
 <section class="page-hero">
   <div class="container">
-    <span class="eyebrow tag">Услуги</span>
-    <h1 style="margin-top:14px">Что мы делаем и сколько это стоит</h1>
-    <p>Выберите направление, чтобы увидеть состав работ, сроки и результат, который мы обещаем. Цены ниже — ориентир; финальная смета зависит от задачи.</p>
+    <span class="eyebrow tag" data-i18n="svc.tag">Услуги</span>
+    <h1 style="margin-top:14px" data-i18n="svc.title">Что мы делаем и сколько это стоит</h1>
+    <p data-i18n="svc.lead">Выберите направление, чтобы увидеть состав работ, сроки и результат, который мы обещаем. Цены ниже — ориентир; финальная смета зависит от задачи.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container" data-tabs>
     <div class="tabs">
-      <button class="tab active" data-tab="ads">🎯 Реклама</button>
-      <button class="tab" data-tab="seo">🔍 SEO</button>
-      <button class="tab" data-tab="content">✍️ Контент</button>
-      <button class="tab" data-tab="analytics">📊 Аналитика</button>
-      <button class="tab" data-tab="smm">📱 SMM</button>
-      <button class="tab" data-tab="strategy">🧭 Стратегия</button>
+      <button class="tab active" data-tab="ads" data-i18n="svc.tab.ads">🎯 Реклама</button>
+      <button class="tab" data-tab="seo" data-i18n="svc.tab.seo">🔍 SEO</button>
+      <button class="tab" data-tab="content" data-i18n="svc.tab.content">✍️ Контент</button>
+      <button class="tab" data-tab="analytics" data-i18n="svc.tab.analytics">📊 Аналитика</button>
+      <button class="tab" data-tab="smm" data-i18n="svc.tab.smm">📱 SMM</button>
+      <button class="tab" data-tab="strategy" data-i18n="svc.tab.strategy">🧭 Стратегия</button>
     </div>
 
     <div class="tab-panel active" id="ads">
       <div class="grid grid-2">
         <div>
-          <h2>Контекстная и таргетированная реклама</h2>
-          <p class="muted">Настраиваем рекламу в поиске, сетях и соцсетях. Главная метрика — стоимость заявки и её окупаемость, а не клики.</p>
+          <h2 data-i18n="svc.ads.title">Контекстная и таргетированная реклама</h2>
+          <p class="muted" data-i18n="svc.ads.lead">Настраиваем рекламу в поиске, сетях и соцсетях. Главная метрика — стоимость заявки и её окупаемость, а не клики.</p>
           <ul>
-            <li>Аудит текущих кампаний и конкурентов</li>
-            <li>Сбор семантики, сегментация аудиторий</li>
-            <li>Разработка креативов и посадочных страниц</li>
-            <li>Ежедневная оптимизация ставок и бюджета</li>
-            <li>Еженедельные A/B-тесты объявлений</li>
-            <li>Отчёт по каждому каналу до продаж в CRM</li>
+            <li data-i18n="svc.ads.li1">Аудит текущих кампаний и конкурентов</li>
+            <li data-i18n="svc.ads.li2">Сбор семантики, сегментация аудиторий</li>
+            <li data-i18n="svc.ads.li3">Разработка креативов и посадочных страниц</li>
+            <li data-i18n="svc.ads.li4">Ежедневная оптимизация ставок и бюджета</li>
+            <li data-i18n="svc.ads.li5">Еженедельные A/B-тесты объявлений</li>
+            <li data-i18n="svc.ads.li6">Отчёт по каждому каналу до продаж в CRM</li>
           </ul>
         </div>
         <div>
           <table class="table">
-            <tr><th>Тариф</th><th>Бюджет клиента</th><th>Стоимость</th></tr>
-            <tr><td>Старт</td><td>до 300 000 ₽/мес</td><td class="price">45 000 ₽</td></tr>
-            <tr><td>Рост</td><td>300 000 – 1 млн ₽/мес</td><td class="price">12% от бюджета</td></tr>
-            <tr><td>Масштаб</td><td>от 1 млн ₽/мес</td><td class="price">индивидуально</td></tr>
+            <tr><th data-i18n="svc.th.plan">Тариф</th><th data-i18n="svc.th.budget">Бюджет клиента</th><th data-i18n="svc.th.price">Стоимость</th></tr>
+            <tr><td data-i18n="svc.ads.r1">Старт</td><td data-i18n="svc.ads.r1b">до 300 000 ₽/мес</td><td class="price" data-i18n="svc.ads.r1p">45 000 ₽</td></tr>
+            <tr><td data-i18n="svc.ads.r2">Рост</td><td data-i18n="svc.ads.r2b">300 000 – 1 млн ₽/мес</td><td class="price" data-i18n="svc.ads.r2p">12% от бюджета</td></tr>
+            <tr><td data-i18n="svc.ads.r3">Масштаб</td><td data-i18n="svc.ads.r3b">от 1 млн ₽/мес</td><td class="price" data-i18n="svc.ads.r3p">индивидуально</td></tr>
           </table>
-          <p class="muted" style="margin-top:12px;font-size:.9rem">Первые результаты — через 2–3 недели после запуска.</p>
+          <p class="muted" style="margin-top:12px;font-size:.9rem" data-i18n="svc.ads.note">Первые результаты — через 2–3 недели после запуска.</p>
         </div>
       </div>
     </div>
@@ -71,25 +77,25 @@
     <div class="tab-panel" id="seo">
       <div class="grid grid-2">
         <div>
-          <h2>SEO-продвижение</h2>
-          <p class="muted">Долгосрочный канал с самой низкой стоимостью привлечения. Работаем по позициям, трафику и заявкам.</p>
+          <h2 data-i18n="svc.seo.title">SEO-продвижение</h2>
+          <p class="muted" data-i18n="svc.seo.lead">Долгосрочный канал с самой низкой стоимостью привлечения. Работаем по позициям, трафику и заявкам.</p>
           <ul>
-            <li>Технический аудит и устранение ошибок</li>
-            <li>Семантическое ядро и структура сайта</li>
-            <li>Оптимизация страниц и метатегов</li>
-            <li>Контент под коммерческие и информационные запросы</li>
-            <li>Ссылочная стратегия и внешние упоминания</li>
-            <li>Локальное SEO для офлайн-точек</li>
+            <li data-i18n="svc.seo.li1">Технический аудит и устранение ошибок</li>
+            <li data-i18n="svc.seo.li2">Семантическое ядро и структура сайта</li>
+            <li data-i18n="svc.seo.li3">Оптимизация страниц и метатегов</li>
+            <li data-i18n="svc.seo.li4">Контент под коммерческие и информационные запросы</li>
+            <li data-i18n="svc.seo.li5">Ссылочная стратегия и внешние упоминания</li>
+            <li data-i18n="svc.seo.li6">Локальное SEO для офлайн-точек</li>
           </ul>
         </div>
         <div>
           <table class="table">
-            <tr><th>Тариф</th><th>Объём</th><th>Стоимость</th></tr>
-            <tr><td>Базовый</td><td>до 100 страниц</td><td class="price">60 000 ₽/мес</td></tr>
-            <tr><td>Расширенный</td><td>до 1 000 страниц</td><td class="price">110 000 ₽/мес</td></tr>
-            <tr><td>E-commerce</td><td>от 1 000 страниц</td><td class="price">от 180 000 ₽/мес</td></tr>
+            <tr><th data-i18n="svc.th.plan">Тариф</th><th data-i18n="svc.th.scope">Объём</th><th data-i18n="svc.th.price">Стоимость</th></tr>
+            <tr><td data-i18n="svc.seo.r1">Базовый</td><td data-i18n="svc.seo.r1b">до 100 страниц</td><td class="price" data-i18n="svc.seo.r1p">60 000 ₽/мес</td></tr>
+            <tr><td data-i18n="svc.seo.r2">Расширенный</td><td data-i18n="svc.seo.r2b">до 1 000 страниц</td><td class="price" data-i18n="svc.seo.r2p">110 000 ₽/мес</td></tr>
+            <tr><td data-i18n="svc.seo.r3">E-commerce</td><td data-i18n="svc.seo.r3b">от 1 000 страниц</td><td class="price" data-i18n="svc.seo.r3p">от 180 000 ₽/мес</td></tr>
           </table>
-          <p class="muted" style="margin-top:12px;font-size:.9rem">Устойчивый рост трафика — через 3–5 месяцев.</p>
+          <p class="muted" style="margin-top:12px;font-size:.9rem" data-i18n="svc.seo.note">Устойчивый рост трафика — через 3–5 месяцев.</p>
         </div>
       </div>
     </div>
@@ -97,22 +103,22 @@
     <div class="tab-panel" id="content">
       <div class="grid grid-2">
         <div>
-          <h2>Контент-маркетинг</h2>
-          <p class="muted">Создаём материалы, которые отвечают на вопросы клиентов на каждом этапе выбора и приводят к покупке.</p>
+          <h2 data-i18n="svc.content.title">Контент-маркетинг</h2>
+          <p class="muted" data-i18n="svc.content.lead">Создаём материалы, которые отвечают на вопросы клиентов на каждом этапе выбора и приводят к покупке.</p>
           <ul>
-            <li>Контент-стратегия и редакционный план</li>
-            <li>Экспертные статьи и кейсы</li>
-            <li>Email-рассылки и автоматические цепочки</li>
-            <li>Сценарии и монтаж коротких видео</li>
-            <li>Лид-магниты: чек-листы, гайды, вебинары</li>
+            <li data-i18n="svc.content.li1">Контент-стратегия и редакционный план</li>
+            <li data-i18n="svc.content.li2">Экспертные статьи и кейсы</li>
+            <li data-i18n="svc.content.li3">Email-рассылки и автоматические цепочки</li>
+            <li data-i18n="svc.content.li4">Сценарии и монтаж коротких видео</li>
+            <li data-i18n="svc.content.li5">Лид-магниты: чек-листы, гайды, вебинары</li>
           </ul>
         </div>
         <div>
           <table class="table">
-            <tr><th>Пакет</th><th>Состав</th><th>Стоимость</th></tr>
-            <tr><td>Редакция</td><td>4 статьи + 2 рассылки в месяц</td><td class="price">70 000 ₽/мес</td></tr>
-            <tr><td>Медиа</td><td>8 статей + 4 рассылки + 8 видео</td><td class="price">150 000 ₽/мес</td></tr>
-            <tr><td>Стратегия</td><td>разовая разработка</td><td class="price">90 000 ₽</td></tr>
+            <tr><th data-i18n="svc.th.package">Пакет</th><th data-i18n="svc.th.includes">Состав</th><th data-i18n="svc.th.price">Стоимость</th></tr>
+            <tr><td data-i18n="svc.content.r1">Редакция</td><td data-i18n="svc.content.r1b">4 статьи + 2 рассылки в месяц</td><td class="price" data-i18n="svc.content.r1p">70 000 ₽/мес</td></tr>
+            <tr><td data-i18n="svc.content.r2">Медиа</td><td data-i18n="svc.content.r2b">8 статей + 4 рассылки + 8 видео</td><td class="price" data-i18n="svc.content.r2p">150 000 ₽/мес</td></tr>
+            <tr><td data-i18n="svc.content.r3">Стратегия</td><td data-i18n="svc.content.r3b">разовая разработка</td><td class="price" data-i18n="svc.content.r3p">90 000 ₽</td></tr>
           </table>
         </div>
       </div>
@@ -121,22 +127,22 @@
     <div class="tab-panel" id="analytics">
       <div class="grid grid-2">
         <div>
-          <h2>Сквозная аналитика</h2>
-          <p class="muted">Соединяем рекламные кабинеты, сайт, коллтрекинг и CRM, чтобы видеть прибыль по каждому каналу и ключевому слову.</p>
+          <h2 data-i18n="svc.analytics.title">Сквозная аналитика</h2>
+          <p class="muted" data-i18n="svc.analytics.lead">Соединяем рекламные кабинеты, сайт, коллтрекинг и CRM, чтобы видеть прибыль по каждому каналу и ключевому слову.</p>
           <ul>
-            <li>Настройка целей и событий на сайте</li>
-            <li>Коллтрекинг и email-трекинг</li>
-            <li>Интеграция с CRM и передача статусов сделок</li>
-            <li>Дашборды для руководителя и маркетолога</li>
-            <li>Расчёт юнит-экономики по каналам</li>
+            <li data-i18n="svc.analytics.li1">Настройка целей и событий на сайте</li>
+            <li data-i18n="svc.analytics.li2">Коллтрекинг и email-трекинг</li>
+            <li data-i18n="svc.analytics.li3">Интеграция с CRM и передача статусов сделок</li>
+            <li data-i18n="svc.analytics.li4">Дашборды для руководителя и маркетолога</li>
+            <li data-i18n="svc.analytics.li5">Расчёт юнит-экономики по каналам</li>
           </ul>
         </div>
         <div>
           <table class="table">
-            <tr><th>Работа</th><th>Срок</th><th>Стоимость</th></tr>
-            <tr><td>Базовая настройка</td><td>1–2 недели</td><td class="price">55 000 ₽</td></tr>
-            <tr><td>Сквозная аналитика с CRM</td><td>3–4 недели</td><td class="price">140 000 ₽</td></tr>
-            <tr><td>Сопровождение</td><td>ежемесячно</td><td class="price">25 000 ₽/мес</td></tr>
+            <tr><th data-i18n="svc.th.work">Работа</th><th data-i18n="svc.th.time">Срок</th><th data-i18n="svc.th.price">Стоимость</th></tr>
+            <tr><td data-i18n="svc.analytics.r1">Базовая настройка</td><td data-i18n="svc.analytics.r1b">1–2 недели</td><td class="price" data-i18n="svc.analytics.r1p">55 000 ₽</td></tr>
+            <tr><td data-i18n="svc.analytics.r2">Сквозная аналитика с CRM</td><td data-i18n="svc.analytics.r2b">3–4 недели</td><td class="price" data-i18n="svc.analytics.r2p">140 000 ₽</td></tr>
+            <tr><td data-i18n="svc.analytics.r3">Сопровождение</td><td data-i18n="svc.analytics.r3b">ежемесячно</td><td class="price" data-i18n="svc.analytics.r3p">25 000 ₽/мес</td></tr>
           </table>
         </div>
       </div>
@@ -145,22 +151,22 @@
     <div class="tab-panel" id="smm">
       <div class="grid grid-2">
         <div>
-          <h2>SMM и работа с блогерами</h2>
-          <p class="muted">Ведём соцсети так, чтобы они продавали, а не просто собирали лайки. Подбираем блогеров по реальной аудитории, а не по подписчикам.</p>
+          <h2 data-i18n="svc.smm.title">SMM и работа с блогерами</h2>
+          <p class="muted" data-i18n="svc.smm.lead">Ведём соцсети так, чтобы они продавали, а не просто собирали лайки. Подбираем блогеров по реальной аудитории, а не по подписчикам.</p>
           <ul>
-            <li>Стратегия и визуальная концепция</li>
-            <li>Контент-план, съёмка, дизайн, тексты</li>
-            <li>Комьюнити-менеджмент и ответы в комментариях</li>
-            <li>Посевы и интеграции у блогеров</li>
-            <li>Отчёт по охватам, подписчикам и заявкам</li>
+            <li data-i18n="svc.smm.li1">Стратегия и визуальная концепция</li>
+            <li data-i18n="svc.smm.li2">Контент-план, съёмка, дизайн, тексты</li>
+            <li data-i18n="svc.smm.li3">Комьюнити-менеджмент и ответы в комментариях</li>
+            <li data-i18n="svc.smm.li4">Посевы и интеграции у блогеров</li>
+            <li data-i18n="svc.smm.li5">Отчёт по охватам, подписчикам и заявкам</li>
           </ul>
         </div>
         <div>
           <table class="table">
-            <tr><th>Пакет</th><th>Состав</th><th>Стоимость</th></tr>
-            <tr><td>Лайт</td><td>1 площадка, 12 публикаций</td><td class="price">50 000 ₽/мес</td></tr>
-            <tr><td>Стандарт</td><td>2 площадки, 24 публикации + сторис</td><td class="price">95 000 ₽/мес</td></tr>
-            <tr><td>Инфлюенс</td><td>подбор и запуск 5 интеграций</td><td class="price">от 80 000 ₽</td></tr>
+            <tr><th data-i18n="svc.th.package">Пакет</th><th data-i18n="svc.th.includes">Состав</th><th data-i18n="svc.th.price">Стоимость</th></tr>
+            <tr><td data-i18n="svc.smm.r1">Лайт</td><td data-i18n="svc.smm.r1b">1 площадка, 12 публикаций</td><td class="price" data-i18n="svc.smm.r1p">50 000 ₽/мес</td></tr>
+            <tr><td data-i18n="svc.smm.r2">Стандарт</td><td data-i18n="svc.smm.r2b">2 площадки, 24 публикации + сторис</td><td class="price" data-i18n="svc.smm.r2p">95 000 ₽/мес</td></tr>
+            <tr><td data-i18n="svc.smm.r3">Инфлюенс</td><td data-i18n="svc.smm.r3b">подбор и запуск 5 интеграций</td><td class="price" data-i18n="svc.smm.r3p">от 80 000 ₽</td></tr>
           </table>
         </div>
       </div>
@@ -169,22 +175,22 @@
     <div class="tab-panel" id="strategy">
       <div class="grid grid-2">
         <div>
-          <h2>Маркетинговая стратегия</h2>
-          <p class="muted">Для запуска нового продукта или перезапуска маркетинга. Результат — документ с планом действий, бюджетом и целевыми показателями на 12 месяцев.</p>
+          <h2 data-i18n="svc.strategy.title">Маркетинговая стратегия</h2>
+          <p class="muted" data-i18n="svc.strategy.lead">Для запуска нового продукта или перезапуска маркетинга. Результат — документ с планом действий, бюджетом и целевыми показателями на 12 месяцев.</p>
           <ul>
-            <li>Анализ рынка и конкурентов</li>
-            <li>Исследование аудитории: интервью и опросы</li>
-            <li>Позиционирование и ключевые сообщения</li>
-            <li>Выбор каналов и медиаплан</li>
-            <li>Финансовая модель и KPI</li>
+            <li data-i18n="svc.strategy.li1">Анализ рынка и конкурентов</li>
+            <li data-i18n="svc.strategy.li2">Исследование аудитории: интервью и опросы</li>
+            <li data-i18n="svc.strategy.li3">Позиционирование и ключевые сообщения</li>
+            <li data-i18n="svc.strategy.li4">Выбор каналов и медиаплан</li>
+            <li data-i18n="svc.strategy.li5">Финансовая модель и KPI</li>
           </ul>
         </div>
         <div>
           <table class="table">
-            <tr><th>Формат</th><th>Срок</th><th>Стоимость</th></tr>
-            <tr><td>Экспресс-стратегия</td><td>2 недели</td><td class="price">120 000 ₽</td></tr>
-            <tr><td>Полная стратегия</td><td>5–6 недель</td><td class="price">350 000 ₽</td></tr>
-            <tr><td>Стратегическая сессия</td><td>1 день</td><td class="price">60 000 ₽</td></tr>
+            <tr><th data-i18n="svc.th.format">Формат</th><th data-i18n="svc.th.time">Срок</th><th data-i18n="svc.th.price">Стоимость</th></tr>
+            <tr><td data-i18n="svc.strategy.r1">Экспресс-стратегия</td><td data-i18n="svc.strategy.r1b">2 недели</td><td class="price" data-i18n="svc.strategy.r1p">120 000 ₽</td></tr>
+            <tr><td data-i18n="svc.strategy.r2">Полная стратегия</td><td data-i18n="svc.strategy.r2b">5–6 недель</td><td class="price" data-i18n="svc.strategy.r2p">350 000 ₽</td></tr>
+            <tr><td data-i18n="svc.strategy.r3">Стратегическая сессия</td><td data-i18n="svc.strategy.r3b">1 день</td><td class="price" data-i18n="svc.strategy.r3p">60 000 ₽</td></tr>
           </table>
         </div>
       </div>
@@ -195,24 +201,24 @@
 <section class="section soft">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Калькулятор</span>
-      <h2>Прикиньте окупаемость рекламы</h2>
-      <p class="muted">Подвигайте ползунки — расчёт обновляется мгновенно. Это упрощённая модель для оценки, а не коммерческое предложение.</p>
+      <span class="eyebrow" data-i18n="svc.calc.eyebrow">Калькулятор</span>
+      <h2 data-i18n="svc.calc.title">Прикиньте окупаемость рекламы</h2>
+      <p class="muted" data-i18n="svc.calc.lead">Подвигайте ползунки — расчёт обновляется мгновенно. Это упрощённая модель для оценки, а не коммерческое предложение.</p>
     </div>
     <div class="calc" id="calc">
       <div class="row">
-        <label>Рекламный бюджет в месяц: <strong id="out-budget"></strong>
+        <label><span data-i18n="svc.calc.budget">Рекламный бюджет в месяц:</span> <strong id="out-budget"></strong>
           <input type="range" id="budget" min="50000" max="2000000" step="10000" value="300000"></label>
-        <label>Стоимость заявки: <strong id="out-cpl"></strong>
+        <label><span data-i18n="svc.calc.cpl">Стоимость заявки:</span> <strong id="out-cpl"></strong>
           <input type="range" id="cpl" min="200" max="10000" step="100" value="1500"></label>
-        <label>Конверсия заявки в продажу: <strong id="out-conv"></strong>
+        <label><span data-i18n="svc.calc.conv">Конверсия заявки в продажу:</span> <strong id="out-conv"></strong>
           <input type="range" id="conv" min="1" max="60" step="1" value="20"></label>
-        <label>Средний чек: <strong id="out-check"></strong>
+        <label><span data-i18n="svc.calc.check">Средний чек:</span> <strong id="out-check"></strong>
           <input type="range" id="check" min="1000" max="300000" step="1000" value="25000"></label>
       </div>
       <div class="calc-result">
         <div>
-          <div class="muted" style="font-size:.9rem">Заявок: <strong id="out-leads"></strong> · Продаж: <strong id="out-sales"></strong> · Выручка: <strong id="out-revenue"></strong></div>
+          <div class="muted" style="font-size:.9rem"><span data-i18n="svc.calc.leads">Заявок:</span> <strong id="out-leads"></strong> · <span data-i18n="svc.calc.sales">Продаж:</span> <strong id="out-sales"></strong> · <span data-i18n="svc.calc.revenue">Выручка:</span> <strong id="out-revenue"></strong></div>
         </div>
         <div>ROMI: <strong id="out-romi"></strong></div>
       </div>
@@ -223,25 +229,26 @@
 <section class="section">
   <div class="container">
     <div class="cta">
-      <h2>Не знаете, с чего начать?</h2>
-      <p>Проведём бесплатный аудит и предложим связку инструментов под ваш бюджет.</p>
-      <a href="about.html#contact" class="btn btn-primary">Оставить заявку</a>
+      <h2 data-i18n="svc.cta.title">Не знаете, с чего начать?</h2>
+      <p data-i18n="svc.cta.text">Проведём бесплатный аудит и предложим связку инструментов под ваш бюджет.</p>
+      <a href="about.html#contact" class="btn btn-primary" data-i18n="svc.cta.btn">Оставить заявку</a>
     </div>
   </div>
 </section>
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div>© <span data-year></span> GovnoLab — маркетинговое агентство. Данные на сайте демонстрационные.</div>
+    <div>© <span data-year></span> <span data-i18n="footer.copy">GovnoLab — маркетинговое агентство. Данные на сайте демонстрационные.</span></div>
     <ul>
-      <li><a href="services.html">Услуги</a></li>
-      <li><a href="cases.html">Кейсы</a></li>
-      <li><a href="blog.html">Блог</a></li>
-      <li><a href="about.html#contact">Контакты</a></li>
+      <li><a href="services.html" data-i18n="footer.services">Услуги</a></li>
+      <li><a href="cases.html" data-i18n="footer.cases">Кейсы</a></li>
+      <li><a href="blog.html" data-i18n="footer.blog">Блог</a></li>
+      <li><a href="about.html#contact" data-i18n="footer.contacts">Контакты</a></li>
     </ul>
   </div>
 </footer>
 <script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
   // Открытие нужного таба по якорю: services.html#seo

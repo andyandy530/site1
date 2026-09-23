@@ -18,19 +18,24 @@
 
   // --- Анимированные счётчики (data-count) ---
   const counters = document.querySelectorAll("[data-count]");
+  // Суффикс счётчика: data-suffix (RU) и data-suffix-en (EN), либо ключ словаря data-suffix-key.
+  const suffix = (el) => el.dataset.suffixKey ? I18N.t(el.dataset.suffixKey)
+    : (I18N.lang === "en" && el.dataset.suffixEn !== undefined ? el.dataset.suffixEn : (el.dataset.suffix || ""));
+  document.addEventListener("langchange", () => {
+    counters.forEach((el) => { if (el.dataset.done) el.textContent = (+el.dataset.count).toLocaleString(I18N.locale()) + suffix(el); });
+  });
   if (counters.length) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (!e.isIntersecting) return;
         const el = e.target;
         const target = +el.dataset.count;
-        const suffix = el.dataset.suffix || "";
         const dur = 1200;
         const start = performance.now();
         const tick = (t) => {
           const p = Math.min((t - start) / dur, 1);
-          el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString("ru-RU") + suffix;
-          if (p < 1) requestAnimationFrame(tick);
+          el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString(I18N.locale()) + suffix(el);
+          if (p < 1) requestAnimationFrame(tick); else el.dataset.done = "1";
         };
         requestAnimationFrame(tick);
         io.unobserve(el);
@@ -74,8 +79,8 @@
       const ok = name.length >= 2 && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
       note.className = "form-note " + (ok ? "ok" : "err");
       note.textContent = ok
-        ? `Спасибо, ${name}! Мы свяжемся с вами по адресу ${email} в течение рабочего дня.`
-        : "Проверьте имя и e-mail: они заполнены некорректно.";
+        ? I18N.t("js.form.ok").replace("{name}", name).replace("{email}", email)
+        : I18N.t("js.form.err");
       if (ok) form.reset();
     });
   }
@@ -97,7 +102,7 @@
       revenue: calc.querySelector("#out-revenue"),
       romi: calc.querySelector("#out-romi")
     };
-    const fmt = (n) => Math.round(n).toLocaleString("ru-RU");
+    const fmt = (n) => Math.round(n).toLocaleString(I18N.locale());
     const update = () => {
       const b = +budget.value, c = +cpl.value, cv = +conv.value, ch = +check.value;
       const leads = b / c;
@@ -115,6 +120,7 @@
       out.romi.style.color = romi >= 0 ? "var(--ok)" : "#dc2626";
     };
     [budget, cpl, conv, check].forEach((i) => i.addEventListener("input", update));
+    document.addEventListener("langchange", update);
     update();
   }
 

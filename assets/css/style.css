@@ -231,3 +231,12 @@ p { margin: 0 0 1em; }
   .hero { padding: 50px 0; }
   .cta { padding: 40px 20px; }
 }
+
+/* Переключатель языка */
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.lang { display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.lang button {
+  border: 0; background: #fff; padding: 7px 10px; font: inherit; font-size: .78rem;
+  font-weight: 700; cursor: pointer; color: var(--muted); letter-spacing: .04em;
+}
+.lang button.active { background: var(--text); color: #fff; }

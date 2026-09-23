@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>О нас и контакты — GovnoLab</title>
-  <meta name="description" content="Команда GovnoLab, принципы работы, ответы на частые вопросы и форма заявки.">
+  <title data-i18n="about.meta.title">О нас и контакты — GovnoLab</title>
+  <meta name="description" data-i18n-content="about.meta.desc" content="Команда GovnoLab, принципы работы, ответы на частые вопросы и форма заявки.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -12,31 +12,37 @@
   <div class="container nav">
     <a href="index.html" class="logo"><span class="logo-mark">G</span> GovnoLab</a>
     <ul class="nav-links">
-      <li><a href="index.html">Главная</a></li>
-      <li><a href="services.html">Услуги</a></li>
-      <li><a href="cases.html">Кейсы</a></li>
-      <li><a href="blog.html">Блог</a></li>
-      <li><a href="about.html">О нас</a></li>
+      <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
+      <li><a href="services.html" data-i18n="nav.services">Услуги</a></li>
+      <li><a href="cases.html" data-i18n="nav.cases">Кейсы</a></li>
+      <li><a href="blog.html" data-i18n="nav.blog">Блог</a></li>
+      <li><a href="about.html" data-i18n="nav.about">О нас</a></li>
     </ul>
-    <a href="about.html#contact" class="btn btn-primary btn-sm">Оставить заявку</a>
-    <button class="burger" aria-label="Меню">☰</button>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Язык" data-i18n-aria-label="nav.lang">
+        <button type="button" data-lang="ru">RU</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="about.html#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">Оставить заявку</a>
+      <button class="burger" aria-label="Меню" data-i18n-aria-label="nav.menu">☰</button>
+    </div>
   </div>
 </header>
 
 <section class="page-hero">
   <div class="container">
-    <span class="eyebrow tag">О нас</span>
-    <h1 style="margin-top:14px">Команда, которая считает</h1>
-    <p>GovnoLab — агентство performance-маркетинга. Мы выросли из внутреннего отдела маркетинга e-commerce-компании, поэтому смотрим на рекламу глазами бизнеса: через прибыль, а не через охваты.</p>
+    <span class="eyebrow tag" data-i18n="about.tag">О нас</span>
+    <h1 style="margin-top:14px" data-i18n="about.title">Команда, которая считает</h1>
+    <p data-i18n="about.lead">GovnoLab — агентство performance-маркетинга. Мы выросли из внутреннего отдела маркетинга e-commerce-компании, поэтому смотрим на рекламу глазами бизнеса: через прибыль, а не через охваты.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
     <div class="grid grid-3">
-      <div class="card"><div class="icon">🎯</div><h3>Цифры вместо обещаний</h3><p>Перед стартом фиксируем целевые показатели и еженедельно показываем, где мы относительно них.</p></div>
-      <div class="card"><div class="icon">🔍</div><h3>Прозрачность</h3><p>Все рекламные кабинеты и аналитика принадлежат клиенту. Доступ есть у вас в любой момент.</p></div>
-      <div class="card"><div class="icon">🤝</div><h3>Партнёрство</h3><p>Работаем как внешний отдел маркетинга: участвуем в планировании и отвечаем за результат.</p></div>
+      <div class="card"><div class="icon">🎯</div><h3 data-i18n="about.p1.title">Цифры вместо обещаний</h3><p data-i18n="about.p1.text">Перед стартом фиксируем целевые показатели и еженедельно показываем, где мы относительно них.</p></div>
+      <div class="card"><div class="icon">🔍</div><h3 data-i18n="about.p2.title">Прозрачность</h3><p data-i18n="about.p2.text">Все рекламные кабинеты и аналитика принадлежат клиенту. Доступ есть у вас в любой момент.</p></div>
+      <div class="card"><div class="icon">🤝</div><h3 data-i18n="about.p3.title">Партнёрство</h3><p data-i18n="about.p3.text">Работаем как внешний отдел маркетинга: участвуем в планировании и отвечаем за результат.</p></div>
     </div>
   </div>
 </section>
@@ -44,16 +50,16 @@
 <section class="section soft">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Команда</span>
-      <h2>Кто будет работать над вашим проектом</h2>
+      <span class="eyebrow" data-i18n="about.team.eyebrow">Команда</span>
+      <h2 data-i18n="about.team.title">Кто будет работать над вашим проектом</h2>
     </div>
     <div class="grid grid-3">
-      <div class="card"><div class="avatar" style="background:#4f46e5">ИП</div><h3>Игорь Петров</h3><p class="muted" style="flex:0">Основатель, стратегия</p><p>12 лет в маркетинге, экс-руководитель отдела маркетинга в крупном e-commerce.</p></div>
-      <div class="card"><div class="avatar" style="background:#06b6d4">МВ</div><h3>Мария Волкова</h3><p class="muted" style="flex:0">Руководитель рекламного направления</p><p>Управляла бюджетами более 100 млн ₽ в год в сферах SaaS и финтеха.</p></div>
-      <div class="card"><div class="avatar" style="background:#10b981">СН</div><h3>Сергей Новиков</h3><p class="muted" style="flex:0">Руководитель SEO</p><p>Вывел в топ более 40 проектов, автор курса по техническому SEO.</p></div>
-      <div class="card"><div class="avatar" style="background:#f59e0b">ОК</div><h3>Ольга Кузнецова</h3><p class="muted" style="flex:0">Главный редактор</p><p>Отвечает за контент-стратегии, рассылки и редакционные процессы клиентов.</p></div>
-      <div class="card"><div class="avatar" style="background:#8b5cf6">АЛ</div><h3>Антон Лебедев</h3><p class="muted" style="flex:0">Аналитик</p><p>Строит сквозную аналитику и дашборды, считает юнит-экономику по каналам.</p></div>
-      <div class="card"><div class="avatar" style="background:#ec4899">ДС</div><h3>Дарья Соколова</h3><p class="muted" style="flex:0">Аккаунт-менеджер</p><p>Ваш единый контакт: планирование, отчёты, координация команды.</p></div>
+      <div class="card"><div class="avatar" style="background:#4f46e5">ИП</div><h3 data-i18n="about.t1.name">Игорь Петров</h3><p class="muted" style="flex:0" data-i18n="about.t1.role">Основатель, стратегия</p><p data-i18n="about.t1.text">12 лет в маркетинге, экс-руководитель отдела маркетинга в крупном e-commerce.</p></div>
+      <div class="card"><div class="avatar" style="background:#06b6d4">МВ</div><h3 data-i18n="about.t2.name">Мария Волкова</h3><p class="muted" style="flex:0" data-i18n="about.t2.role">Руководитель рекламного направления</p><p data-i18n="about.t2.text">Управляла бюджетами более 100 млн ₽ в год в сферах SaaS и финтеха.</p></div>
+      <div class="card"><div class="avatar" style="background:#10b981">СН</div><h3 data-i18n="about.t3.name">Сергей Новиков</h3><p class="muted" style="flex:0" data-i18n="about.t3.role">Руководитель SEO</p><p data-i18n="about.t3.text">Вывел в топ более 40 проектов, автор курса по техническому SEO.</p></div>
+      <div class="card"><div class="avatar" style="background:#f59e0b">ОК</div><h3 data-i18n="about.t4.name">Ольга Кузнецова</h3><p class="muted" style="flex:0" data-i18n="about.t4.role">Главный редактор</p><p data-i18n="about.t4.text">Отвечает за контент-стратегии, рассылки и редакционные процессы клиентов.</p></div>
+      <div class="card"><div class="avatar" style="background:#8b5cf6">АЛ</div><h3 data-i18n="about.t5.name">Антон Лебедев</h3><p class="muted" style="flex:0" data-i18n="about.t5.role">Аналитик</p><p data-i18n="about.t5.text">Строит сквозную аналитику и дашборды, считает юнит-экономику по каналам.</p></div>
+      <div class="card"><div class="avatar" style="background:#ec4899">ДС</div><h3 data-i18n="about.t6.name">Дарья Соколова</h3><p class="muted" style="flex:0" data-i18n="about.t6.role">Аккаунт-менеджер</p><p data-i18n="about.t6.text">Ваш единый контакт: планирование, отчёты, координация команды.</p></div>
     </div>
   </div>
 </section>
@@ -63,38 +69,38 @@
     <div class="grid grid-2" style="align-items:start">
       <div>
         <div class="section-head">
-          <span class="eyebrow">FAQ</span>
-          <h2>Частые вопросы</h2>
+          <span class="eyebrow" data-i18n="about.faq.eyebrow">FAQ</span>
+          <h2 data-i18n="about.faq.title">Частые вопросы</h2>
         </div>
-        <div class="faq-item"><button class="faq-q">Когда появятся первые результаты?</button><div class="faq-a">Реклама даёт первые заявки через 2–3 недели после запуска. SEO и контент — долгосрочные каналы, устойчивый рост заметен через 3–5 месяцев.</div></div>
-        <div class="faq-item"><button class="faq-q">Какой минимальный бюджет на рекламу?</button><div class="faq-a">Мы берём проекты с рекламным бюджетом от 100 000 ₽ в месяц. При меньшем бюджете сложно набрать статистику для оптимизации.</div></div>
-        <div class="faq-item"><button class="faq-q">Кому принадлежат рекламные кабинеты?</button><div class="faq-a">Всегда клиенту. Мы работаем в ваших аккаунтах, и при завершении сотрудничества вся история и настройки остаются у вас.</div></div>
-        <div class="faq-item"><button class="faq-q">Как вы отчитываетесь?</button><div class="faq-a">Еженедельный отчёт по ключевым метрикам и ежемесячная встреча с разбором результатов и планом на следующий период. Дашборд доступен онлайн круглосуточно.</div></div>
-        <div class="faq-item"><button class="faq-q">Есть ли минимальный срок контракта?</button><div class="faq-a">Для рекламы — 3 месяца, для SEO — 6 месяцев. За меньший срок нельзя объективно оценить результат.</div></div>
+        <div class="faq-item"><button class="faq-q" data-i18n="about.faq.q1">Когда появятся первые результаты?</button><div class="faq-a" data-i18n="about.faq.a1">Реклама даёт первые заявки через 2–3 недели после запуска. SEO и контент — долгосрочные каналы, устойчивый рост заметен через 3–5 месяцев.</div></div>
+        <div class="faq-item"><button class="faq-q" data-i18n="about.faq.q2">Какой минимальный бюджет на рекламу?</button><div class="faq-a" data-i18n="about.faq.a2">Мы берём проекты с рекламным бюджетом от 100 000 ₽ в месяц. При меньшем бюджете сложно набрать статистику для оптимизации.</div></div>
+        <div class="faq-item"><button class="faq-q" data-i18n="about.faq.q3">Кому принадлежат рекламные кабинеты?</button><div class="faq-a" data-i18n="about.faq.a3">Всегда клиенту. Мы работаем в ваших аккаунтах, и при завершении сотрудничества вся история и настройки остаются у вас.</div></div>
+        <div class="faq-item"><button class="faq-q" data-i18n="about.faq.q4">Как вы отчитываетесь?</button><div class="faq-a" data-i18n="about.faq.a4">Еженедельный отчёт по ключевым метрикам и ежемесячная встреча с разбором результатов и планом на следующий период. Дашборд доступен онлайн круглосуточно.</div></div>
+        <div class="faq-item"><button class="faq-q" data-i18n="about.faq.q5">Есть ли минимальный срок контракта?</button><div class="faq-a" data-i18n="about.faq.a5">Для рекламы — 3 месяца, для SEO — 6 месяцев. За меньший срок нельзя объективно оценить результат.</div></div>
       </div>
       <div id="contact">
         <div class="section-head">
-          <span class="eyebrow">Контакты</span>
-          <h2>Оставьте заявку</h2>
-          <p class="muted">Ответим в течение рабочего дня и предложим время для звонка.</p>
+          <span class="eyebrow" data-i18n="about.contact.eyebrow">Контакты</span>
+          <h2 data-i18n="about.contact.title">Оставьте заявку</h2>
+          <p class="muted" data-i18n="about.contact.lead">Ответим в течение рабочего дня и предложим время для звонка.</p>
         </div>
         <form class="form calc" id="lead-form" novalidate>
           <div class="row">
-            <label>Имя<input type="text" name="name" placeholder="Как к вам обращаться" required></label>
-            <label>E-mail<input type="email" name="email" placeholder="you@company.com" required></label>
+            <label><span data-i18n="about.form.name">Имя</span><input type="text" name="name" placeholder="Как к вам обращаться" data-i18n-placeholder="about.form.name.ph" required></label>
+            <label><span data-i18n="about.form.email">E-mail</span><input type="email" name="email" placeholder="you@company.com" required></label>
           </div>
           <div class="row">
-            <label>Компания<input type="text" name="company" placeholder="Название"></label>
-            <label>Интересует
+            <label><span data-i18n="about.form.company">Компания</span><input type="text" name="company" placeholder="Название" data-i18n-placeholder="about.form.company.ph"></label>
+            <label><span data-i18n="about.form.service">Интересует</span>
               <select name="service">
-                <option>Реклама</option><option>SEO</option><option>Контент</option><option>Аналитика</option><option>SMM</option><option>Стратегия</option><option>Пока не знаю</option>
+                <option data-i18n="about.form.o1">Реклама</option><option data-i18n="about.form.o2">SEO</option><option data-i18n="about.form.o3">Контент</option><option data-i18n="about.form.o4">Аналитика</option><option data-i18n="about.form.o5">SMM</option><option data-i18n="about.form.o6">Стратегия</option><option data-i18n="about.form.o7">Пока не знаю</option>
               </select>
             </label>
           </div>
-          <label>Задача<textarea name="message" rows="4" placeholder="Коротко опишите, что хотите улучшить"></textarea></label>
+          <label><span data-i18n="about.form.task">Задача</span><textarea name="message" rows="4" placeholder="Коротко опишите, что хотите улучшить" data-i18n-placeholder="about.form.task.ph"></textarea></label>
           <div class="form-note"></div>
-          <button type="submit" class="btn btn-primary">Отправить заявку</button>
-          <p class="muted" style="font-size:.85rem;margin:0">Или напишите: hello@GovnoLab.example · +7 (900) 000-00-00</p>
+          <button type="submit" class="btn btn-primary" data-i18n="about.form.submit">Отправить заявку</button>
+          <p class="muted" style="font-size:.85rem;margin:0" data-i18n="about.form.or">Или напишите: hello@govnolab.example · +7 (900) 000-00-00</p>
         </form>
       </div>
     </div>
@@ -103,16 +109,17 @@
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div>© <span data-year></span> GovnoLab — маркетинговое агентство. Данные на сайте демонстрационные.</div>
+    <div>© <span data-year></span> <span data-i18n="footer.copy">GovnoLab — маркетинговое агентство. Данные на сайте демонстрационные.</span></div>
     <ul>
-      <li><a href="services.html">Услуги</a></li>
-      <li><a href="cases.html">Кейсы</a></li>
-      <li><a href="blog.html">Блог</a></li>
-      <li><a href="about.html#contact">Контакты</a></li>
+      <li><a href="services.html" data-i18n="footer.services">Услуги</a></li>
+      <li><a href="cases.html" data-i18n="footer.cases">Кейсы</a></li>
+      <li><a href="blog.html" data-i18n="footer.blog">Блог</a></li>
+      <li><a href="about.html#contact" data-i18n="footer.contacts">Контакты</a></li>
     </ul>
   </div>
 </footer>
 <script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

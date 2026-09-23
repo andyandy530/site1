@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GovnoLab — маркетинг, который считает деньги</title>
-  <meta name="description" content="Маркетинговое агентство GovnoLab: контекстная реклама, SEO, контент, аналитика. Рост продаж с прозрачными цифрами.">
+  <title data-i18n="home.meta.title">GovnoLab — маркетинг, который считает деньги</title>
+  <meta name="description" data-i18n-content="home.meta.desc" content="Маркетинговое агентство GovnoLab: контекстная реклама, SEO, контент, аналитика. Рост продаж с прозрачными цифрами.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -12,35 +12,41 @@
   <div class="container nav">
     <a href="index.html" class="logo"><span class="logo-mark">G</span> GovnoLab</a>
     <ul class="nav-links">
-      <li><a href="index.html">Главная</a></li>
-      <li><a href="services.html">Услуги</a></li>
-      <li><a href="cases.html">Кейсы</a></li>
-      <li><a href="blog.html">Блог</a></li>
-      <li><a href="about.html">О нас</a></li>
+      <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
+      <li><a href="services.html" data-i18n="nav.services">Услуги</a></li>
+      <li><a href="cases.html" data-i18n="nav.cases">Кейсы</a></li>
+      <li><a href="blog.html" data-i18n="nav.blog">Блог</a></li>
+      <li><a href="about.html" data-i18n="nav.about">О нас</a></li>
     </ul>
-    <a href="about.html#contact" class="btn btn-primary btn-sm">Оставить заявку</a>
-    <button class="burger" aria-label="Меню">☰</button>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Язык" data-i18n-aria-label="nav.lang">
+        <button type="button" data-lang="ru">RU</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="about.html#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">Оставить заявку</a>
+      <button class="burger" aria-label="Меню" data-i18n-aria-label="nav.menu">☰</button>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <span class="tag">Маркетинг с понятной экономикой</span>
-      <h1 style="margin-top:14px">Приводим клиентов, а не просто трафик</h1>
-      <p class="lead">Строим системный маркетинг для бизнеса: реклама, SEO, контент и аналитика в одной связке. Каждый рубль бюджета виден в отчёте.</p>
+      <span class="tag" data-i18n="home.hero.tag">Маркетинг с понятной экономикой</span>
+      <h1 style="margin-top:14px" data-i18n="home.hero.title">Приводим клиентов, а не просто трафик</h1>
+      <p class="lead" data-i18n="home.hero.lead">Строим системный маркетинг для бизнеса: реклама, SEO, контент и аналитика в одной связке. Каждый рубль бюджета виден в отчёте.</p>
       <div class="hero-actions">
-        <a href="cases.html" class="btn btn-primary">Смотреть кейсы</a>
-        <a href="services.html" class="btn btn-ghost">Услуги и цены</a>
+        <a href="cases.html" class="btn btn-primary" data-i18n="home.hero.cta1">Смотреть кейсы</a>
+        <a href="services.html" class="btn btn-ghost" data-i18n="home.hero.cta2">Услуги и цены</a>
       </div>
     </div>
     <div class="hero-card">
-      <h4>Средний рост показателей клиентов за 6 месяцев</h4>
+      <h4 data-i18n="home.hero.card">Средний рост показателей клиентов за 6 месяцев</h4>
       <div class="bars">
-        <div class="bar"><span>Заявки</span><div class="bar-track"><div class="bar-fill" data-width="86"></div></div><strong>+86%</strong></div>
-        <div class="bar"><span>Выручка</span><div class="bar-track"><div class="bar-fill" data-width="64"></div></div><strong>+64%</strong></div>
-        <div class="bar"><span>Трафик</span><div class="bar-track"><div class="bar-fill" data-width="92"></div></div><strong>+92%</strong></div>
-        <div class="bar"><span>Цена заявки</span><div class="bar-track"><div class="bar-fill" data-width="41"></div></div><strong>-41%</strong></div>
+        <div class="bar"><span data-i18n="home.hero.bar1">Заявки</span><div class="bar-track"><div class="bar-fill" data-width="86"></div></div><strong>+86%</strong></div>
+        <div class="bar"><span data-i18n="home.hero.bar2">Выручка</span><div class="bar-track"><div class="bar-fill" data-width="64"></div></div><strong>+64%</strong></div>
+        <div class="bar"><span data-i18n="home.hero.bar3">Трафик</span><div class="bar-track"><div class="bar-fill" data-width="92"></div></div><strong>+92%</strong></div>
+        <div class="bar"><span data-i18n="home.hero.bar4">Цена заявки</span><div class="bar-track"><div class="bar-fill" data-width="41"></div></div><strong>-41%</strong></div>
       </div>
     </div>
   </div>
@@ -49,10 +55,10 @@
 <section class="section">
   <div class="container">
     <div class="stats">
-      <div class="stat"><div class="num" data-count="127" data-suffix="+">0</div><div class="label">проектов запущено</div></div>
-      <div class="stat"><div class="num" data-count="6" data-suffix=" лет">0</div><div class="label">на рынке</div></div>
-      <div class="stat"><div class="num" data-count="340" data-suffix=" млн ₽">0</div><div class="label">рекламного бюджета под управлением</div></div>
-      <div class="stat"><div class="num" data-count="94" data-suffix="%">0</div><div class="label">клиентов продлевают контракт</div></div>
+      <div class="stat"><div class="num" data-count="127" data-suffix="+">0</div><div class="label" data-i18n="home.stat1">проектов запущено</div></div>
+      <div class="stat"><div class="num" data-count="6">0</div><div class="label" data-i18n="home.stat2">лет на рынке</div></div>
+      <div class="stat"><div class="num" data-count="340" data-suffix-key="js.mln">0</div><div class="label" data-i18n="home.stat3">рекламного бюджета под управлением</div></div>
+      <div class="stat"><div class="num" data-count="94" data-suffix="%">0</div><div class="label" data-i18n="home.stat4">клиентов продлевают контракт</div></div>
     </div>
   </div>
 </section>
@@ -60,46 +66,46 @@
 <section class="section soft">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Что мы делаем</span>
-      <h2>Направления работы</h2>
-      <p class="muted">Подбираем инструменты под задачу бизнеса, а не продаём всё подряд. Подробности и цены — на странице услуг.</p>
+      <span class="eyebrow" data-i18n="home.what.eyebrow">Что мы делаем</span>
+      <h2 data-i18n="home.what.title">Направления работы</h2>
+      <p class="muted" data-i18n="home.what.lead">Подбираем инструменты под задачу бизнеса, а не продаём всё подряд. Подробности и цены — на странице услуг.</p>
     </div>
     <div class="grid grid-3">
       <a href="services.html#ads" class="card">
         <div class="icon">🎯</div>
-        <h3>Контекстная и таргетированная реклама</h3>
-        <p>Запуск, оптимизация и масштабирование рекламных кампаний с фокусом на стоимость заявки.</p>
-        <span class="link">Подробнее →</span>
+        <h3 data-i18n="home.svc1.title">Контекстная и таргетированная реклама</h3>
+        <p data-i18n="home.svc1.text">Запуск, оптимизация и масштабирование рекламных кампаний с фокусом на стоимость заявки.</p>
+        <span class="link" data-i18n="home.more">Подробнее →</span>
       </a>
       <a href="services.html#seo" class="card">
         <div class="icon">🔍</div>
-        <h3>SEO-продвижение</h3>
-        <p>Технический аудит, семантика, контент и ссылочная стратегия для роста органического трафика.</p>
-        <span class="link">Подробнее →</span>
+        <h3 data-i18n="home.svc2.title">SEO-продвижение</h3>
+        <p data-i18n="home.svc2.text">Технический аудит, семантика, контент и ссылочная стратегия для роста органического трафика.</p>
+        <span class="link" data-i18n="home.more">Подробнее →</span>
       </a>
       <a href="services.html#content" class="card">
         <div class="icon">✍️</div>
-        <h3>Контент-маркетинг</h3>
-        <p>Статьи, видео, рассылки и соцсети, которые прогревают аудиторию и приводят к покупке.</p>
-        <span class="link">Подробнее →</span>
+        <h3 data-i18n="home.svc3.title">Контент-маркетинг</h3>
+        <p data-i18n="home.svc3.text">Статьи, видео, рассылки и соцсети, которые прогревают аудиторию и приводят к покупке.</p>
+        <span class="link" data-i18n="home.more">Подробнее →</span>
       </a>
       <a href="services.html#analytics" class="card">
         <div class="icon">📊</div>
-        <h3>Сквозная аналитика</h3>
-        <p>Связываем рекламу, сайт и CRM, чтобы видеть реальную прибыль по каждому каналу.</p>
-        <span class="link">Подробнее →</span>
+        <h3 data-i18n="home.svc4.title">Сквозная аналитика</h3>
+        <p data-i18n="home.svc4.text">Связываем рекламу, сайт и CRM, чтобы видеть реальную прибыль по каждому каналу.</p>
+        <span class="link" data-i18n="home.more">Подробнее →</span>
       </a>
       <a href="services.html#smm" class="card">
         <div class="icon">📱</div>
-        <h3>SMM и инфлюенсеры</h3>
-        <p>Ведение соцсетей, посевы, работа с блогерами и комьюнити вокруг бренда.</p>
-        <span class="link">Подробнее →</span>
+        <h3 data-i18n="home.svc5.title">SMM и инфлюенсеры</h3>
+        <p data-i18n="home.svc5.text">Ведение соцсетей, посевы, работа с блогерами и комьюнити вокруг бренда.</p>
+        <span class="link" data-i18n="home.more">Подробнее →</span>
       </a>
       <a href="services.html#strategy" class="card">
         <div class="icon">🧭</div>
-        <h3>Маркетинговая стратегия</h3>
-        <p>Исследование рынка, позиционирование, план запуска и бюджет на год.</p>
-        <span class="link">Подробнее →</span>
+        <h3 data-i18n="home.svc6.title">Маркетинговая стратегия</h3>
+        <p data-i18n="home.svc6.text">Исследование рынка, позиционирование, план запуска и бюджет на год.</p>
+        <span class="link" data-i18n="home.more">Подробнее →</span>
       </a>
     </div>
   </div>
@@ -108,32 +114,32 @@
 <section class="section">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Результаты</span>
-      <h2>Избранные кейсы</h2>
+      <span class="eyebrow" data-i18n="home.results.eyebrow">Результаты</span>
+      <h2 data-i18n="home.results.title">Избранные кейсы</h2>
     </div>
     <div class="grid grid-3" id="home-cases"></div>
-    <div style="margin-top:28px"><a href="cases.html" class="btn btn-ghost">Все кейсы →</a></div>
+    <div style="margin-top:28px"><a href="cases.html" class="btn btn-ghost" data-i18n="home.results.all">Все кейсы →</a></div>
   </div>
 </section>
 
 <section class="section soft">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Отзывы</span>
-      <h2>Что говорят клиенты</h2>
+      <span class="eyebrow" data-i18n="home.reviews.eyebrow">Отзывы</span>
+      <h2 data-i18n="home.reviews.title">Что говорят клиенты</h2>
     </div>
     <div class="grid grid-3">
       <div class="quote">
-        <p>«Впервые за три года мы видим, какой канал реально приносит деньги. Бюджет тот же, продаж вдвое больше».</p>
-        <div class="who"><div class="avatar" style="width:40px;height:40px;font-size:.9rem;margin:0;background:#4f46e5">АМ</div><div>Анна Морозова<small>Директор по маркетингу, интернет-магазин одежды</small></div></div>
+        <p data-i18n="home.q1">«Впервые за три года мы видим, какой канал реально приносит деньги. Бюджет тот же, продаж вдвое больше».</p>
+        <div class="who"><div class="avatar" style="width:40px;height:40px;font-size:.9rem;margin:0;background:#4f46e5">АМ</div><div><span data-i18n="home.q1.name">Анна Морозова</span><small data-i18n="home.q1.role">Директор по маркетингу, интернет-магазин одежды</small></div></div>
       </div>
       <div class="quote">
-        <p>«Команда говорит на языке цифр, а не обещаний. Отчёты понятны даже финансовому директору».</p>
-        <div class="who"><div class="avatar" style="width:40px;height:40px;font-size:.9rem;margin:0;background:#06b6d4">ДК</div><div>Дмитрий Козлов<small>CEO, SaaS-сервис</small></div></div>
+        <p data-i18n="home.q2">«Команда говорит на языке цифр, а не обещаний. Отчёты понятны даже финансовому директору».</p>
+        <div class="who"><div class="avatar" style="width:40px;height:40px;font-size:.9rem;margin:0;background:#06b6d4">ДК</div><div><span data-i18n="home.q2.name">Дмитрий Козлов</span><small data-i18n="home.q2.role">CEO, SaaS-сервис</small></div></div>
       </div>
       <div class="quote">
-        <p>«Заполнили расписание трёх новых филиалов за четыре месяца. Раньше на это уходил год».</p>
-        <div class="who"><div class="avatar" style="width:40px;height:40px;font-size:.9rem;margin:0;background:#10b981">ЕС</div><div>Елена Смирнова<small>Управляющая сетью клиник</small></div></div>
+        <p data-i18n="home.q3">«Заполнили расписание трёх новых филиалов за четыре месяца. Раньше на это уходил год».</p>
+        <div class="who"><div class="avatar" style="width:40px;height:40px;font-size:.9rem;margin:0;background:#10b981">ЕС</div><div><span data-i18n="home.q3.name">Елена Смирнова</span><small data-i18n="home.q3.role">Управляющая сетью клиник</small></div></div>
       </div>
     </div>
   </div>
@@ -142,42 +148,49 @@
 <section class="section">
   <div class="container">
     <div class="cta">
-      <h2>Обсудим ваш проект?</h2>
-      <p>Оставьте заявку — за два рабочих дня подготовим бесплатный аудит текущего маркетинга и план роста.</p>
-      <a href="about.html#contact" class="btn btn-primary">Получить аудит</a>
+      <h2 data-i18n="home.cta.title">Обсудим ваш проект?</h2>
+      <p data-i18n="home.cta.text">Оставьте заявку — за два рабочих дня подготовим бесплатный аудит текущего маркетинга и план роста.</p>
+      <a href="about.html#contact" class="btn btn-primary" data-i18n="home.cta.btn">Получить аудит</a>
     </div>
   </div>
 </section>
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div>© <span data-year></span> GovnoLab — маркетинговое агентство. Данные на сайте демонстрационные.</div>
+    <div>© <span data-year></span> <span data-i18n="footer.copy">GovnoLab — маркетинговое агентство. Данные на сайте демонстрационные.</span></div>
     <ul>
-      <li><a href="services.html">Услуги</a></li>
-      <li><a href="cases.html">Кейсы</a></li>
-      <li><a href="blog.html">Блог</a></li>
-      <li><a href="about.html#contact">Контакты</a></li>
+      <li><a href="services.html" data-i18n="footer.services">Услуги</a></li>
+      <li><a href="cases.html" data-i18n="footer.cases">Кейсы</a></li>
+      <li><a href="blog.html" data-i18n="footer.blog">Блог</a></li>
+      <li><a href="about.html#contact" data-i18n="footer.contacts">Контакты</a></li>
     </ul>
   </div>
 </footer>
 <script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
   // Три первых кейса на главной.
   (function () {
     const wrap = document.getElementById("home-cases");
-    SITE_DATA.cases.slice(0, 3).forEach((c) => {
-      const el = document.createElement("a");
-      el.className = "card case-card";
-      el.href = "cases.html#" + c.id;
-      el.innerHTML = `
-        <div class="cover" style="background:${c.color}">${c.emoji}</div>
-        <span class="tag">${c.industryLabel}</span>
-        <h3 style="margin-top:10px">${c.title}</h3>
-        <p>${c.task}</p>
-        <div class="case-metrics">${c.metrics.slice(0, 2).map((m) => `<div><strong>${m.value}</strong>${m.label}</div>`).join("")}</div>`;
-      wrap.appendChild(el);
-    });
+    const L = I18N.L;
+    function render() {
+      wrap.innerHTML = "";
+      SITE_DATA.cases.slice(0, 3).forEach((c) => {
+        const el = document.createElement("a");
+        el.className = "card case-card";
+        el.href = "cases.html#" + c.id;
+        el.innerHTML = `
+          <div class="cover" style="background:${c.color}">${c.emoji}</div>
+          <span class="tag">${L(c.industryLabel)}</span>
+          <h3 style="margin-top:10px">${L(c.title)}</h3>
+          <p>${L(c.task)}</p>
+          <div class="case-metrics">${c.metrics.slice(0, 2).map((m) => `<div><strong>${m.value}</strong>${L(m.label)}</div>`).join("")}</div>`;
+        wrap.appendChild(el);
+      });
+    }
+    document.addEventListener("langchange", render);
+    render();
   })();
 </script>
 </body>

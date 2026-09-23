@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Кейсы — GovnoLab</title>
-  <meta name="description" content="Кейсы маркетингового агентства GovnoLab: e-commerce, SaaS, услуги, образование. Задача, решение, цифры.">
+  <title data-i18n="cases.meta.title">Кейсы — GovnoLab</title>
+  <meta name="description" data-i18n-content="cases.meta.desc" content="Кейсы маркетингового агентства GovnoLab: e-commerce, SaaS, услуги, образование. Задача, решение, цифры.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -12,33 +12,39 @@
   <div class="container nav">
     <a href="index.html" class="logo"><span class="logo-mark">G</span> GovnoLab</a>
     <ul class="nav-links">
-      <li><a href="index.html">Главная</a></li>
-      <li><a href="services.html">Услуги</a></li>
-      <li><a href="cases.html">Кейсы</a></li>
-      <li><a href="blog.html">Блог</a></li>
-      <li><a href="about.html">О нас</a></li>
+      <li><a href="index.html" data-i18n="nav.home">Главная</a></li>
+      <li><a href="services.html" data-i18n="nav.services">Услуги</a></li>
+      <li><a href="cases.html" data-i18n="nav.cases">Кейсы</a></li>
+      <li><a href="blog.html" data-i18n="nav.blog">Блог</a></li>
+      <li><a href="about.html" data-i18n="nav.about">О нас</a></li>
     </ul>
-    <a href="about.html#contact" class="btn btn-primary btn-sm">Оставить заявку</a>
-    <button class="burger" aria-label="Меню">☰</button>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Язык" data-i18n-aria-label="nav.lang">
+        <button type="button" data-lang="ru">RU</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="about.html#contact" class="btn btn-primary btn-sm" data-i18n="nav.cta">Оставить заявку</a>
+      <button class="burger" aria-label="Меню" data-i18n-aria-label="nav.menu">☰</button>
+    </div>
   </div>
 </header>
 
 <section class="page-hero">
   <div class="container">
-    <span class="eyebrow tag">Кейсы</span>
-    <h1 style="margin-top:14px">Результаты в цифрах</h1>
-    <p>Отфильтруйте кейсы по отрасли и нажмите на карточку, чтобы увидеть задачу, решение и итоговые метрики.</p>
+    <span class="eyebrow tag" data-i18n="cases.tag">Кейсы</span>
+    <h1 style="margin-top:14px" data-i18n="cases.title">Результаты в цифрах</h1>
+    <p data-i18n="cases.lead">Отфильтруйте кейсы по отрасли и нажмите на карточку, чтобы увидеть задачу, решение и итоговые метрики.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
     <div class="tabs" id="case-filters">
-      <button class="tab active" data-filter="all">Все</button>
-      <button class="tab" data-filter="ecommerce">E-commerce</button>
-      <button class="tab" data-filter="saas">SaaS</button>
-      <button class="tab" data-filter="services">Услуги</button>
-      <button class="tab" data-filter="education">Образование</button>
+      <button class="tab active" data-filter="all" data-i18n="cases.f.all">Все</button>
+      <button class="tab" data-filter="ecommerce" data-i18n="cases.f.ecommerce">E-commerce</button>
+      <button class="tab" data-filter="saas" data-i18n="cases.f.saas">SaaS</button>
+      <button class="tab" data-filter="services" data-i18n="cases.f.services">Услуги</button>
+      <button class="tab" data-filter="education" data-i18n="cases.f.education">Образование</button>
     </div>
     <div class="grid grid-3" id="cases-grid"></div>
   </div>
@@ -46,23 +52,24 @@
 
 <div class="modal" id="case-modal">
   <div class="modal-box">
-    <button class="modal-close" aria-label="Закрыть">✕</button>
+    <button class="modal-close" aria-label="Закрыть" data-i18n-aria-label="cases.close">✕</button>
     <div id="modal-content"></div>
   </div>
 </div>
 
 <footer class="footer">
   <div class="container footer-grid">
-    <div>© <span data-year></span> GovnoLab — маркетинговое агентство. Данные на сайте демонстрационные.</div>
+    <div>© <span data-year></span> <span data-i18n="footer.copy">GovnoLab — маркетинговое агентство. Данные на сайте демонстрационные.</span></div>
     <ul>
-      <li><a href="services.html">Услуги</a></li>
-      <li><a href="cases.html">Кейсы</a></li>
-      <li><a href="blog.html">Блог</a></li>
-      <li><a href="about.html#contact">Контакты</a></li>
+      <li><a href="services.html" data-i18n="footer.services">Услуги</a></li>
+      <li><a href="cases.html" data-i18n="footer.cases">Кейсы</a></li>
+      <li><a href="blog.html" data-i18n="footer.blog">Блог</a></li>
+      <li><a href="about.html#contact" data-i18n="footer.contacts">Контакты</a></li>
     </ul>
   </div>
 </footer>
 <script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
 <script src="assets/js/main.js"></script>
 <script>
   (function () {
@@ -70,12 +77,15 @@
     const filters = document.getElementById("case-filters");
     const modal = document.getElementById("case-modal");
     const content = document.getElementById("modal-content");
+    const L = I18N.L, t = I18N.t;
+    let filter = "all";
+    let current = null;
 
-    function render(filter) {
+    function render() {
       grid.innerHTML = "";
       const list = SITE_DATA.cases.filter((c) => filter === "all" || c.industry === filter);
       if (!list.length) {
-        grid.innerHTML = '<div class="empty">Кейсов в этой категории пока нет.</div>';
+        grid.innerHTML = `<div class="empty">${t("js.nocases")}</div>`;
         return;
       }
       list.forEach((c) => {
@@ -83,29 +93,31 @@
         el.className = "card case-card";
         el.innerHTML = `
           <div class="cover" style="background:${c.color}">${c.emoji}</div>
-          <span class="tag">${c.industryLabel}</span>
-          <h3 style="margin-top:10px">${c.title}</h3>
-          <p>${c.task}</p>
-          <div class="case-metrics">${c.metrics.slice(0, 2).map((m) => `<div><strong>${m.value}</strong>${m.label}</div>`).join("")}</div>
-          <span class="link" style="margin-top:14px">Открыть кейс →</span>`;
+          <span class="tag">${L(c.industryLabel)}</span>
+          <h3 style="margin-top:10px">${L(c.title)}</h3>
+          <p>${L(c.task)}</p>
+          <div class="case-metrics">${c.metrics.slice(0, 2).map((m) => `<div><strong>${m.value}</strong>${L(m.label)}</div>`).join("")}</div>
+          <span class="link" style="margin-top:14px">${t("js.opencase")}</span>`;
         el.addEventListener("click", () => open(c));
         grid.appendChild(el);
       });
     }
 
     function open(c) {
+      current = c;
       history.replaceState(null, "", "#" + c.id);
       content.innerHTML = `
-        <span class="tag">${c.industryLabel}</span>
-        <h2 style="margin-top:12px">${c.emoji} ${c.title}</h2>
-        <p class="muted">Срок работы: ${c.period}</p>
-        <div class="modal-metrics">${c.metrics.map((m) => `<div><strong>${m.value}</strong><span>${m.label}</span></div>`).join("")}</div>
-        <h3>Задача</h3><p>${c.task}</p>
-        <h3>Что сделали</h3><p>${c.solution}</p>
-        <a href="about.html#contact" class="btn btn-primary">Хочу так же</a>`;
+        <span class="tag">${L(c.industryLabel)}</span>
+        <h2 style="margin-top:12px">${c.emoji} ${L(c.title)}</h2>
+        <p class="muted">${t("js.period")}: ${L(c.period)}</p>
+        <div class="modal-metrics">${c.metrics.map((m) => `<div><strong>${m.value}</strong><span>${L(m.label)}</span></div>`).join("")}</div>
+        <h3>${t("js.task")}</h3><p>${L(c.task)}</p>
+        <h3>${t("js.solution")}</h3><p>${L(c.solution)}</p>
+        <a href="about.html#contact" class="btn btn-primary">${t("js.want")}</a>`;
       modal.classList.add("open");
     }
     function close() {
+      current = null;
       modal.classList.remove("open");
       history.replaceState(null, "", location.pathname);
     }
@@ -113,15 +125,17 @@
     filters.addEventListener("click", (e) => {
       const btn = e.target.closest(".tab");
       if (!btn) return;
-      filters.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+      filters.querySelectorAll(".tab").forEach((x) => x.classList.remove("active"));
       btn.classList.add("active");
-      render(btn.dataset.filter);
+      filter = btn.dataset.filter;
+      render();
     });
     modal.querySelector(".modal-close").addEventListener("click", close);
     modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+    document.addEventListener("langchange", () => { render(); if (current) open(current); });
 
-    render("all");
+    render();
     // Открыть кейс по ссылке cases.html#ecom-fashion
     const fromHash = SITE_DATA.cases.find((c) => c.id === location.hash.slice(1));
     if (fromHash) open(fromHash);
