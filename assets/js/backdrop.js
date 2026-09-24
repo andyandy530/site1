@@ -9,8 +9,8 @@
     "JSON", "SQL", "Git", "Docker", "React", "Node.js", "DevOps", "Analytics", "Funnel", "Retargeting",
     "Growth", "Data", "Cloud", "Automation", "Conversion", "Attribution", "Cohort", "Pipeline"
   ];
-  const MAX_ALPHA = 0.08;        // peak visibility (0–1); keep it low
-  const SPEED = 0.06;            // px per frame at 60 fps ≈ 3.6 px/s
+  const MAX_ALPHA = 0.20;        // peak visibility (0–1); keep it low
+  const SPEED = 0.08;            // px per frame at 60 fps ≈ 3.6 px/s
   const LIFE_MIN = 18, LIFE_MAX = 40;  // seconds a word lives (fade in → out)
   const DENSITY = 1 / 42000;     // words per px² of viewport
   const MAX_WORDS = 70;
