@@ -31,7 +31,7 @@ body {
   margin: 0;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color: var(--text);
-  background: var(--bg);
+  background: transparent; /* the page background lives on <html>; the animated backdrop sits between them */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -48,7 +48,7 @@ li { margin-bottom: 4px; }
 .muted { color: var(--muted); }
 .container { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
 .section { padding: 88px 0; position: relative; }
-.section.soft { background: var(--bg-soft); }
+.section.soft { background: rgba(255, 255, 255, .025); }
 .section.soft::before, .section.soft::after {
   content: ""; position: absolute; left: 0; right: 0; height: 1px;
   background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
@@ -61,6 +61,9 @@ li { margin-bottom: 4px; }
   text-transform: uppercase; color: var(--accent-2); margin-bottom: 12px;
 }
 .eyebrow::before { content: ""; width: 18px; height: 2px; background: var(--grad); border-radius: 2px; }
+
+/* ---------- Ambient backdrop (assets/js/backdrop.js) ---------- */
+.backdrop { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 
 /* ---------- Icons ---------- */
 .ico { width: 1em; height: 1em; display: inline-block; vertical-align: -.125em; flex-shrink: 0; }
@@ -356,7 +359,7 @@ li { margin-bottom: 4px; }
   .hero-grid, .grid-3, .grid-2, .stats, .form .row, .calc .row, .modal-metrics { grid-template-columns: 1fr; }
   .nav-links {
     display: none; position: absolute; top: 72px; left: 0; right: 0;
-    flex-direction: column; gap: 0; background: var(--bg-soft); border-bottom: 1px solid var(--line); padding: 10px 20px;
+    flex-direction: column; gap: 0; background: #0b0e17; border-bottom: 1px solid var(--line); padding: 10px 20px;
   }
   .nav-links.open { display: flex; }
   .nav-links li a { display: block; padding: 12px 0; }
