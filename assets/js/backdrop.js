@@ -8,11 +8,11 @@
     "SEO", "SMM", "SEM", "PPC", "CPC", "CPA", "CPL", "CTR", "ROI", "ROMI", "ROAS", "LTV", "CAC", "CRM", "KPI",
     "AI", "ML", "LLM", "IT", "API", "UX", "UI", "A/B", "B2B", "B2C", "SaaS", "CRO", "UTM", "NPS", "ARPU",
     "DAU", "MAU", "CMS", "CDN", "ERP", "GitHub", "Python", "JavaScript", "Claude", "GPT", "HTML", "CSS",
-    "JSON", "SQL", "Git", "Docker", "React", "Node.js", "DevOps", "Analytics", "Funnel", "Retargeting",
-    "Growth", "Data", "Cloud", "Automation", "Conversion", "Attribution", "Cohort", "Pipeline"
+    "JSON", "SQL", "Git", "Analytics", "Funnel", "Retargeting", "Growth", "Data", "Cloud", "Automation", "Conversion",
+    "Attribution", "Cohort", "Pipeline"
   ];
-  const MAX_ALPHA = 0.20;              // peak visibility (0–1)
-  const SPEED = 4.8;                   // drift speed in px per second
+  const MAX_ALPHA = 0.15;              // peak visibility (0–1)
+  const SPEED = 2;                     // drift speed in px per second
   const LIFE_MIN = 18, LIFE_MAX = 40;  // seconds a word lives (fade in → drift → fade out)
   const DENSITY = 1 / 42000;           // words per px² of the whole page
   const MAX_WORDS = 250;               // hard cap for very long pages
