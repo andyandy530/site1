@@ -63,7 +63,20 @@ li { margin-bottom: 4px; }
 .eyebrow::before { content: ""; width: 18px; height: 2px; background: var(--grad); border-radius: 2px; }
 
 /* ---------- Ambient backdrop (assets/js/backdrop.js) ---------- */
-.backdrop { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+.backdrop { position: absolute; top: 0; left: 0; width: 100%; z-index: -1; pointer-events: none; overflow: hidden; }
+.bd-word {
+  position: absolute; white-space: nowrap; user-select: none; opacity: 0; color: var(--accent);
+  font-family: "Inter", system-ui, sans-serif; line-height: 1;
+  animation: bd-drift var(--d, 30s) ease-in-out infinite; will-change: transform, opacity;
+}
+.bd-word.mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+.bd-word.cyan { color: var(--accent-2); }
+.bd-word.static { animation: none; opacity: calc(var(--a, .2) * .7); }
+@keyframes bd-drift {
+  0%   { opacity: 0; transform: translate(0, 0); }
+  50%  { opacity: var(--a, .2); }
+  100% { opacity: 0; transform: translate(var(--dx, 0px), var(--dy, 0px)); }
+}
 
 /* ---------- Icons ---------- */
 .ico { width: 1em; height: 1em; display: inline-block; vertical-align: -.125em; flex-shrink: 0; }

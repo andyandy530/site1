@@ -1,8 +1,7 @@
 // Ambient backdrop: marketing and tech terms drifting very slowly behind the content.
-// Words are anchored to the PAGE (document coordinates), not to the viewport:
-// they stay where they are while you scroll past them.
-// The canvas itself is viewport-sized and fixed; each frame subtracts window.scrollY
-// so only the words currently on screen are drawn.
+// Each word is a <span> inside a page-sized container, animated with CSS (see .bd-word in style.css).
+// The browser scrolls and animates them on the compositor, so they never stutter during scrolling.
+// Words are anchored to the PAGE: they stay where they are while you scroll past them.
 // Tweak the constants below to change density, speed and visibility.
 (function () {
   const WORDS = [
@@ -12,107 +11,65 @@
     "JSON", "SQL", "Git", "Docker", "React", "Node.js", "DevOps", "Analytics", "Funnel", "Retargeting",
     "Growth", "Data", "Cloud", "Automation", "Conversion", "Attribution", "Cohort", "Pipeline"
   ];
-  const MAX_ALPHA = 0.20;        // peak visibility (0–1)
-  const SPEED = 0.08;            // px per frame at 60 fps ≈ 4.8 px/s
-  const LIFE_MIN = 18, LIFE_MAX = 40;  // seconds a word lives (fade in → out)
-  const DENSITY = 1 / 42000;     // words per px² of the whole page
-  const MAX_WORDS = 400;         // hard cap for very long pages
-  const FRAME_MS = 1000 / 30;    // cap at 30 fps: the motion is slow, this halves the CPU cost
+  const MAX_ALPHA = 0.20;              // peak visibility (0–1)
+  const SPEED = 4.8;                   // drift speed in px per second
+  const LIFE_MIN = 18, LIFE_MAX = 40;  // seconds a word lives (fade in → drift → fade out)
+  const DENSITY = 1 / 42000;           // words per px² of the whole page
+  const MAX_WORDS = 250;               // hard cap for very long pages
 
   const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const canvas = document.createElement("canvas");
-  canvas.className = "backdrop";
-  canvas.setAttribute("aria-hidden", "true");
-  document.body.prepend(canvas);
-  const ctx = canvas.getContext("2d");
+  const root = document.createElement("div");
+  root.className = "backdrop";
+  root.setAttribute("aria-hidden", "true");
+  document.body.prepend(root);
 
-  let W = 0, H = 0, PAGE_H = 0, dpr = 1, words = [];
   const rand = (a, b) => a + Math.random() * (b - a);
-  const accent = () => (getComputedStyle(document.documentElement).getPropertyValue("--accent") || "#8b8cff").trim();
   const pageHeight = () => Math.max(document.documentElement.scrollHeight, window.innerHeight);
+  let W = window.innerWidth, PAGE_H = pageHeight();
+  const words = [];
 
-  // x / y are document coordinates (y counts from the top of the page, not the screen).
-  function spawn(initial) {
+  // Place a word at a random spot and give it a new random drift vector.
+  function place(el) {
     const life = rand(LIFE_MIN, LIFE_MAX);
     const angle = rand(0, Math.PI * 2);
-    return {
-      text: WORDS[Math.floor(Math.random() * WORDS.length)],
-      x: rand(0, W), y: rand(0, PAGE_H),
-      vx: Math.cos(angle) * SPEED, vy: Math.sin(angle) * SPEED,
-      turn: rand(-0.002, 0.002),
-      size: rand(13, 34),
-      weight: Math.random() < 0.3 ? 700 : 500,
-      mono: Math.random() < 0.35,
-      life, age: initial ? rand(0, life) : 0,
-      tint: Math.random() < 0.35 ? "cyan" : "accent"
-    };
+    const dist = SPEED * life;
+    el.style.left = rand(0, W) + "px";
+    el.style.top = rand(0, PAGE_H) + "px";
+    el.style.setProperty("--d", life + "s");
+    el.style.setProperty("--dx", Math.cos(angle) * dist + "px");
+    el.style.setProperty("--dy", Math.sin(angle) * dist + "px");
+    el.textContent = WORDS[Math.floor(Math.random() * WORDS.length)];
+  }
+
+  function spawn() {
+    const el = document.createElement("span");
+    el.className = "bd-word" + (Math.random() < 0.35 ? " mono" : "") + (Math.random() < 0.35 ? " cyan" : "");
+    el.style.fontSize = rand(13, 34) + "px";
+    el.style.fontWeight = Math.random() < 0.3 ? 700 : 500;
+    el.style.setProperty("--a", MAX_ALPHA);
+    place(el);
+    if (reduce) {
+      el.classList.add("static");
+    } else {
+      // start mid-life so the page does not begin empty
+      el.style.animationDelay = -rand(0, LIFE_MAX) + "s";
+      // each time the animation loops (opacity is 0 there), move the word somewhere else
+      el.addEventListener("animationiteration", () => place(el));
+    }
+    root.appendChild(el);
+    words.push(el);
   }
 
   function layout() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = window.innerWidth; H = window.innerHeight; PAGE_H = pageHeight();
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    canvas.style.width = W + "px"; canvas.style.height = H + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    W = window.innerWidth; PAGE_H = pageHeight();
+    root.style.height = PAGE_H + "px";
     const target = Math.min(MAX_WORDS, Math.round(W * PAGE_H * DENSITY));
-    while (words.length < target) words.push(spawn(true));
-    words.length = target;
-  }
-
-  // Page height changes when tabs / FAQ / filters open: re-check it now and then.
-  function syncHeight() {
-    const h = pageHeight();
-    if (h !== PAGE_H) { PAGE_H = h; const target = Math.min(MAX_WORDS, Math.round(W * PAGE_H * DENSITY)); while (words.length < target) words.push(spawn(true)); words.length = target; }
-  }
-
-  function draw(w, alpha, colAccent) {
-    const sy = w.y - window.scrollY;               // document → screen
-    if (sy < -60 || sy > H + 60) return;           // off screen: skip
-    ctx.globalAlpha = alpha;
-    ctx.fillStyle = w.tint === "cyan" ? "#22d3ee" : colAccent;
-    ctx.font = `${w.weight} ${w.size}px ${w.mono ? '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace' : 'Inter, system-ui, sans-serif'}`;
-    ctx.fillText(w.text, w.x, sy);
-  }
-
-  let last = performance.now(), running = true, heightTimer = 0;
-  function frame(now) {
-    if (!running) return;
-    if (now - last < FRAME_MS) { requestAnimationFrame(frame); return; }
-    const dt = Math.min((now - last) / 1000, 0.1); last = now;
-    if ((heightTimer += dt) > 2) { heightTimer = 0; syncHeight(); }
-    ctx.clearRect(0, 0, W, H);
-    const colAccent = accent();
-    for (let i = 0; i < words.length; i++) {
-      const w = words[i];
-      w.age += dt;
-      if (w.age >= w.life) { words[i] = spawn(false); continue; }
-      // gentle wandering: rotate velocity a little every frame
-      const a = Math.atan2(w.vy, w.vx) + w.turn;
-      w.vx = Math.cos(a) * SPEED; w.vy = Math.sin(a) * SPEED;
-      w.x += w.vx * dt * 60; w.y += w.vy * dt * 60;
-      if (w.x < -100) w.x = W + 100; if (w.x > W + 100) w.x = -100;
-      if (w.y < -50) w.y = PAGE_H + 50; if (w.y > PAGE_H + 50) w.y = -50;
-      // smooth fade in / out over the word's life
-      const t = w.age / w.life;
-      draw(w, MAX_ALPHA * Math.sin(Math.PI * t) ** 1.5, colAccent);
-    }
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(frame);
-  }
-
-  function drawStatic() {
-    ctx.clearRect(0, 0, W, H);
-    const colAccent = accent();
-    words.forEach((w) => draw(w, MAX_ALPHA * 0.7, colAccent));
-    ctx.globalAlpha = 1;
+    while (words.length < target) spawn();
+    while (words.length > target) words.pop().remove();
   }
 
   layout();
-  window.addEventListener("resize", () => { layout(); if (reduce) drawStatic(); });
-  if (reduce) { drawStatic(); window.addEventListener("scroll", drawStatic, { passive: true }); return; }
-  document.addEventListener("visibilitychange", () => {
-    running = !document.hidden;
-    if (running) { last = performance.now(); requestAnimationFrame(frame); }
-  });
-  requestAnimationFrame(frame);
+  window.addEventListener("resize", layout);
+  // Page height changes when tabs / FAQ / filters open.
+  if (window.ResizeObserver) new ResizeObserver(layout).observe(document.body);
 })();
