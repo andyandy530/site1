@@ -1,5 +1,8 @@
 // Ambient backdrop: marketing and tech terms drifting very slowly behind the content.
-// Words fade in, wander, fade out and reappear elsewhere ("slow diffusion").
+// Words are anchored to the PAGE (document coordinates), not to the viewport:
+// they stay where they are while you scroll past them.
+// The canvas itself is viewport-sized and fixed; each frame subtracts window.scrollY
+// so only the words currently on screen are drawn.
 // Tweak the constants below to change density, speed and visibility.
 (function () {
   const WORDS = [
@@ -9,11 +12,12 @@
     "JSON", "SQL", "Git", "Docker", "React", "Node.js", "DevOps", "Analytics", "Funnel", "Retargeting",
     "Growth", "Data", "Cloud", "Automation", "Conversion", "Attribution", "Cohort", "Pipeline"
   ];
-  const MAX_ALPHA = 0.20;        // peak visibility (0–1); keep it low
-  const SPEED = 0.08;            // px per frame at 60 fps ≈ 3.6 px/s
+  const MAX_ALPHA = 0.20;        // peak visibility (0–1)
+  const SPEED = 0.08;            // px per frame at 60 fps ≈ 4.8 px/s
   const LIFE_MIN = 18, LIFE_MAX = 40;  // seconds a word lives (fade in → out)
-  const DENSITY = 1 / 42000;     // words per px² of viewport
-  const MAX_WORDS = 70;
+  const DENSITY = 1 / 42000;     // words per px² of the whole page
+  const MAX_WORDS = 400;         // hard cap for very long pages
+  const FRAME_MS = 1000 / 30;    // cap at 30 fps: the motion is slow, this halves the CPU cost
 
   const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const canvas = document.createElement("canvas");
@@ -22,16 +26,18 @@
   document.body.prepend(canvas);
   const ctx = canvas.getContext("2d");
 
-  let W = 0, H = 0, dpr = 1, words = [];
+  let W = 0, H = 0, PAGE_H = 0, dpr = 1, words = [];
   const rand = (a, b) => a + Math.random() * (b - a);
   const accent = () => (getComputedStyle(document.documentElement).getPropertyValue("--accent") || "#8b8cff").trim();
+  const pageHeight = () => Math.max(document.documentElement.scrollHeight, window.innerHeight);
 
+  // x / y are document coordinates (y counts from the top of the page, not the screen).
   function spawn(initial) {
     const life = rand(LIFE_MIN, LIFE_MAX);
     const angle = rand(0, Math.PI * 2);
     return {
       text: WORDS[Math.floor(Math.random() * WORDS.length)],
-      x: rand(0, W), y: rand(0, H),
+      x: rand(0, W), y: rand(0, PAGE_H),
       vx: Math.cos(angle) * SPEED, vy: Math.sin(angle) * SPEED,
       turn: rand(-0.002, 0.002),
       size: rand(13, 34),
@@ -42,23 +48,38 @@
     };
   }
 
-  function resize() {
+  function layout() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = window.innerWidth; H = window.innerHeight;
+    W = window.innerWidth; H = window.innerHeight; PAGE_H = pageHeight();
     canvas.width = W * dpr; canvas.height = H * dpr;
     canvas.style.width = W + "px"; canvas.style.height = H + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const target = Math.min(MAX_WORDS, Math.round(W * H * DENSITY));
+    const target = Math.min(MAX_WORDS, Math.round(W * PAGE_H * DENSITY));
     while (words.length < target) words.push(spawn(true));
     words.length = target;
   }
 
-  let last = performance.now(), running = true;
-  const FRAME_MS = 1000 / 30;    // cap at 30 fps: the motion is slow, this halves the CPU cost
+  // Page height changes when tabs / FAQ / filters open: re-check it now and then.
+  function syncHeight() {
+    const h = pageHeight();
+    if (h !== PAGE_H) { PAGE_H = h; const target = Math.min(MAX_WORDS, Math.round(W * PAGE_H * DENSITY)); while (words.length < target) words.push(spawn(true)); words.length = target; }
+  }
+
+  function draw(w, alpha, colAccent) {
+    const sy = w.y - window.scrollY;               // document → screen
+    if (sy < -60 || sy > H + 60) return;           // off screen: skip
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = w.tint === "cyan" ? "#22d3ee" : colAccent;
+    ctx.font = `${w.weight} ${w.size}px ${w.mono ? '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace' : 'Inter, system-ui, sans-serif'}`;
+    ctx.fillText(w.text, w.x, sy);
+  }
+
+  let last = performance.now(), running = true, heightTimer = 0;
   function frame(now) {
     if (!running) return;
     if (now - last < FRAME_MS) { requestAnimationFrame(frame); return; }
     const dt = Math.min((now - last) / 1000, 0.1); last = now;
+    if ((heightTimer += dt) > 2) { heightTimer = 0; syncHeight(); }
     ctx.clearRect(0, 0, W, H);
     const colAccent = accent();
     for (let i = 0; i < words.length; i++) {
@@ -70,14 +91,10 @@
       w.vx = Math.cos(a) * SPEED; w.vy = Math.sin(a) * SPEED;
       w.x += w.vx * dt * 60; w.y += w.vy * dt * 60;
       if (w.x < -100) w.x = W + 100; if (w.x > W + 100) w.x = -100;
-      if (w.y < -50) w.y = H + 50; if (w.y > H + 50) w.y = -50;
+      if (w.y < -50) w.y = PAGE_H + 50; if (w.y > PAGE_H + 50) w.y = -50;
       // smooth fade in / out over the word's life
       const t = w.age / w.life;
-      const alpha = MAX_ALPHA * Math.sin(Math.PI * t) ** 1.5;
-      ctx.globalAlpha = alpha;
-      ctx.fillStyle = w.tint === "cyan" ? "#22d3ee" : colAccent;
-      ctx.font = `${w.weight} ${w.size}px ${w.mono ? '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace' : 'Inter, system-ui, sans-serif'}`;
-      ctx.fillText(w.text, w.x, w.y);
+      draw(w, MAX_ALPHA * Math.sin(Math.PI * t) ** 1.5, colAccent);
     }
     ctx.globalAlpha = 1;
     requestAnimationFrame(frame);
@@ -85,18 +102,14 @@
 
   function drawStatic() {
     ctx.clearRect(0, 0, W, H);
-    words.forEach((w) => {
-      ctx.globalAlpha = MAX_ALPHA * 0.7;
-      ctx.fillStyle = w.tint === "cyan" ? "#22d3ee" : accent();
-      ctx.font = `${w.weight} ${w.size}px Inter, system-ui, sans-serif`;
-      ctx.fillText(w.text, w.x, w.y);
-    });
+    const colAccent = accent();
+    words.forEach((w) => draw(w, MAX_ALPHA * 0.7, colAccent));
     ctx.globalAlpha = 1;
   }
 
-  resize();
-  window.addEventListener("resize", () => { resize(); if (reduce) drawStatic(); });
-  if (reduce) { drawStatic(); return; }
+  layout();
+  window.addEventListener("resize", () => { layout(); if (reduce) drawStatic(); });
+  if (reduce) { drawStatic(); window.addEventListener("scroll", drawStatic, { passive: true }); return; }
   document.addEventListener("visibilitychange", () => {
     running = !document.hidden;
     if (running) { last = performance.now(); requestAnimationFrame(frame); }
